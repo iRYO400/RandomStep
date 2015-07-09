@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Randomizer_2</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="choose_genre">Choose Genre</string>
+    <string name="ADD">ADD</string>
+    <string name="HD_Resolution">HD_resolution</string>
+    <string name="Wide_Resolution">Wide_btn</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="genres_pick">Genres</string>
+
+    <string-array name="HD">
+        <item>1280x720</item>
+        <item>1600x900</item>
+        <item>1920x1080</item>
+        <item>2560x1440</item>
+    </string-array>
+
+    <string-array name="Wide">
+        <item>1280x800</item>
+        <item>1680x1050</item>
+        <item>1900x1200</item>
+        <item>2560x1600</item>
+    </string-array>
+
+    <string-array name="GenresString">
+        <item>Creative Graphics</item>
+        <item>Games</item>
+        <item>Travel and World</item>
+        <item>Movies</item>
+        <item>3D and Abstract</item>
+    </string-array>
+
+    <string-array name="array720">
+        <item>http://www.stereofanat.com/anaglyph/anaglyph3d/3d_stereo_anaglyph_stereofanat.com_104.jpg</item>
+        <item>http://41.media.tumblr.com/0bf6d793c0b2a9112e88b1fabe6c31e0/tumblr_npydgwPYLb1sr8zk0o1_1280.jpg</item>
+        <item>http://40.media.tumblr.com/b1d0cdfb54173f545def0f31fb8f19be/tumblr_npxfkk4NwI1sr8zk0o1_1280.jpg</item>
+        <item>http://41.media.tumblr.com/793655a7b66f66b3f6b27d2c9cbbf353/tumblr_nohpfzpILZ1sr8zk0o1_1280.jpg</item>
+    </string-array>
+
+    <string-array name="array900">
+        <item>http://www.hdkartinki.ru/hellpanel/thumbs/8/kartinka-temnyi-elf-3129.jpg</item>
+    </string-array>
+
+    <string-array name="array1080">
+        <item>http://www.hdkartinki.ru/hellpanel/thumbs/7/kartinka-yastreb-2565.jpg</item>
+    </string-array>
+
+    <string-array name="array1440">
+        <item>http://protest.ru/pics/esline.jpg</item>
+    </string-array>
+
+
+    </resources>
