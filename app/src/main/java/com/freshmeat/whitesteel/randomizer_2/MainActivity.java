@@ -63,10 +63,6 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
         genresWide = new GenresWide();
 
         transaction = manager.beginTransaction();
-//        transaction.add(R.id.hdWideContainer, hd_resol_btn, HD_Resol_btn.TAG);
-//        transaction.add(R.id.genres_container, genresHD, GenresHD.TAG);
-//      //  transaction.commit();
-        Intent intent = new Intent(this, MainActivity.class);
 
         mSettings = getSharedPreferences(APP_PREFERENCE, Context.MODE_PRIVATE);
 //        if(mSettings.contains("HD")){
@@ -85,12 +81,7 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
 //            intent.putExtra("intHD", a);
 //
 //        }
-
-
     }
-
-
-
 
     public void onClickFragmentHDorWide1(View view) {
 
@@ -104,7 +95,7 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
                     transaction.replace(R.id.hdWideContainer, wide_resol_btn, Wide_Resol_btn.TAG);
                     editor = mSettings.edit();
                     editor.putString(Wide_Switchers, "Wide");
-
+                    aSwitch.setChecked(true);
                     Log.d(LOG_TAG, "editor, putString Wide");
                     editor.apply();
                 }
@@ -112,7 +103,7 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
                     transaction.replace(R.id.hdWideContainer, hd_resol_btn, HD_Resol_btn.TAG);
                     editor = mSettings.edit();
                     editor.putString(HD_Switchers, "HD");
-
+                    aSwitch.setChecked(false);
                     Log.d(LOG_TAG, "editor, putString HD");
                     editor.apply();
                 }
@@ -154,8 +145,8 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
 
         transaction = manager.beginTransaction();
 
-//       if(mSettings.contains(HD_Switchers)){
-        if(!this.addList){
+
+        if(!aSwitch.isChecked()){
             str1 = mSettings.getString(HD_Switchers, "HD");
             //aSwitch.setChecked(false);
             transaction.add(R.id.hdWideContainer, hd_resol_btn, HD_Resol_btn.TAG);
@@ -163,7 +154,7 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
             Log.d(LOG_TAG,str1 +" sdfsd");
 
         }
-        else if(getIntent().hasExtra("intWide")){
+        else if(aSwitch.isChecked()){
             str2 = mSettings.getString(Wide_Switchers,"Wide");
           //  aSwitch.setChecked(true);
             transaction.add(R.id.hdWideContainer, wide_resol_btn, Wide_Resol_btn.TAG);
@@ -184,6 +175,9 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
             transaction = manager.beginTransaction();
             transaction.remove(this.hd_resol_btn);
             transaction.remove(this.genresHD);
+            transaction.remove(this.wide_resol_btn);
+            transaction.remove(this.genresWide);
+
             transaction.commit();
         }
         super.onPause();

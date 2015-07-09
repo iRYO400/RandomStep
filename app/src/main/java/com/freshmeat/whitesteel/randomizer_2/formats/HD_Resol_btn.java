@@ -7,8 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.freshmeat.whitesteel.randomizer_2.MainActivity;
 import com.freshmeat.whitesteel.randomizer_2.R;
 
 public class HD_Resol_btn extends Fragment {
@@ -30,23 +28,10 @@ public class HD_Resol_btn extends Fragment {
                         Intent intent = new Intent(getActivity(), HD_Choice.class);
 
                         startActivity(intent);
-                       // finish();
+                        // finish();
                     }
                 }
         );
         return view;
     }
-
-    @Override
-    public String toString() {
-        return "HD_Resol_btn{}";
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-    //    private void finish() {
-//        finish();
-//    }
 }
