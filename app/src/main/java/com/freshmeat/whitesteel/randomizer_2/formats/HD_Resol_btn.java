@@ -37,7 +37,16 @@ public class HD_Resol_btn extends Fragment {
         return view;
     }
 
-//    private void finish() {
+    @Override
+    public String toString() {
+        return "HD_Resol_btn{}";
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+    //    private void finish() {
 //        finish();
 //    }
 }
