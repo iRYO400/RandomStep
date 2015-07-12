@@ -19,6 +19,12 @@ public class Wide_Choice extends Activity implements View.OnClickListener {
     String[] Wide;
     Button button;
     int a;
+    MainActivity mainActivity = new MainActivity();
+
+
+    public MainActivity getMainActivity() {
+        return mainActivity;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +47,6 @@ public class Wide_Choice extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         if(listViewWide.getCheckedItemPosition()!=-1){
             button.setEnabled(true);
-
             Intent intent = new Intent(this, MainActivity.class);
             switch (listViewWide.getCheckedItemPosition()){
                 case 0:

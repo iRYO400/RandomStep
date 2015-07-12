@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import com.freshmeat.whitesteel.randomizer_2.formats.HD_Resol_btn;
@@ -35,7 +36,7 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
     private FragmentManager manager;
     private FragmentTransaction transaction;
 
-    private Switch aSwitch;
+    public Switch aSwitch;
     private SharedPreferences.Editor editor;
     public static final String APP_PREFERENCE = "mySettings";
     public static final String HD_Switchers = "HD_Switcher";
@@ -46,16 +47,14 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
     String str1;
     String str2;
     int a;
+    Bundle bundle = new Bundle();
 
     boolean addList = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         aSwitch = (Switch) findViewById(R.id.switch1);
-
         hd_resol_btn = new HD_Resol_btn();
         wide_resol_btn = new Wide_Resol_btn();
         manager = getSupportFragmentManager();
@@ -64,27 +63,28 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
 
         transaction = manager.beginTransaction();
 
+//        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+//                if(getIntent().hasExtra("800")){
+//                    aSwitch.setChecked(true);
+//                    transaction.add(R.id.hdWideContainer, wide_resol_btn, Wide_Resol_btn.TAG);
+//                    transaction.add(R.id.genres_container, genresWide, GenresWide.TAG);
+//                    Log.d(LOG_TAG,"Ne Huinya");
+//                }
+//                else {
+//                    Log.d(LOG_TAG, "Huinya");
+//
+//                }
+//                transaction.commit();
+//
+//            }
+//        });
         mSettings = getSharedPreferences(APP_PREFERENCE, Context.MODE_PRIVATE);
-//        if(mSettings.contains("HD")){
-//            transaction.add(R.id.hdWideContainer, hd_resol_btn, HD_Resol_btn.TAG);
-//            transaction.add(R.id.genres_container, genresHD, GenresHD.TAG);
-//        }
-//        else if(mSettings.contains("Wide")){
-//            transaction.add(R.id.hdWideContainer, wide_resol_btn, Wide_Resol_btn.TAG);
-//            transaction.add(R.id.genres_container, genresWide, GenresWide.TAG);
-//        }
-//        if (manager.findFragmentByTag(hd_resol_btn.TAG) != null) {
-//            intent.putExtra("intWide", a);
-//
-//        }
-//        else if (manager.findFragmentByTag(wide_resol_btn.TAG) != null) {
-//            intent.putExtra("intHD", a);
-//
-//        }
+
     }
 
     public void onClickFragmentHDorWide1(View view) {
-
 
         transaction = manager.beginTransaction();
 
@@ -95,7 +95,7 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
                     transaction.replace(R.id.hdWideContainer, wide_resol_btn, Wide_Resol_btn.TAG);
                     editor = mSettings.edit();
                     editor.putString(Wide_Switchers, "Wide");
-                    aSwitch.setChecked(true);
+            //        aSwitch.setChecked(true);
                     Log.d(LOG_TAG, "editor, putString Wide");
                     editor.apply();
                 }
@@ -103,13 +103,12 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
                     transaction.replace(R.id.hdWideContainer, hd_resol_btn, HD_Resol_btn.TAG);
                     editor = mSettings.edit();
                     editor.putString(HD_Switchers, "HD");
-                    aSwitch.setChecked(false);
+          //          aSwitch.setChecked(false);
                     Log.d(LOG_TAG, "editor, putString HD");
                     editor.apply();
                 }
                 if (manager.findFragmentByTag(genresHD.TAG) != null){
                     transaction.replace(R.id.genres_container, genresWide, GenresWide.TAG);
-
                 }
                 if(manager.findFragmentByTag(genresWide.TAG) != null){
                     transaction.replace(R.id.genres_container, genresHD, GenresHD.TAG);
@@ -121,65 +120,49 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
 
     }
 
-//    public String getValue(){
-//
-//
-//        if(manager.findFragmentByTag(wide_resol_btn.TAG) != null) {
-//            String string;
-//
-//            string = (mSettings.getString(HD_Switchers, "HD"));
-//            return string;
-//        }
-//        else if(manager.findFragmentByTag(hd_resol_btn.TAG) != null) {
-//            String string1;
-//
-//            string1 = (mSettings.getString(Wide_Switchers, "Wide"));
-//            return string1;
-//        }
-//        a = string+string1
-//
-//    }
-
     @Override
     protected void onResume() {
 
         transaction = manager.beginTransaction();
 
 
-        if(!aSwitch.isChecked()){
+        if(!bundle.getBoolean("True",false)){
             str1 = mSettings.getString(HD_Switchers, "HD");
-            //aSwitch.setChecked(false);
             transaction.add(R.id.hdWideContainer, hd_resol_btn, HD_Resol_btn.TAG);
             transaction.add(R.id.genres_container, genresHD, GenresHD.TAG);
             Log.d(LOG_TAG,str1 +" sdfsd");
-
         }
-        else if(aSwitch.isChecked()){
+        else if(bundle.getBoolean("False", true)){
             str2 = mSettings.getString(Wide_Switchers,"Wide");
-          //  aSwitch.setChecked(true);
             transaction.add(R.id.hdWideContainer, wide_resol_btn, Wide_Resol_btn.TAG);
             transaction.add(R.id.genres_container, genresWide, GenresWide.TAG);
+            aSwitch.isChecked();
             Log.d(LOG_TAG, str2+"  sdfsd");
         }
-
         transaction.commit();
         super.onResume();
-        this.addList = false;
-
     }
 
     @Override
     protected void onPause() {
         this.addList = manager.getFragments().isEmpty();
-        if(!this.addList){
+            if(aSwitch.isChecked()){
+                bundle.putBoolean("False", true);
+
+                Log.d(LOG_TAG, "Skotina");
+
+            }else if(!aSwitch.isChecked()) {
+                bundle.putBoolean("True", false);
+                Log.d(LOG_TAG,"Suka");
+
+            }
             transaction = manager.beginTransaction();
             transaction.remove(this.hd_resol_btn);
             transaction.remove(this.genresHD);
             transaction.remove(this.wide_resol_btn);
             transaction.remove(this.genresWide);
-
             transaction.commit();
-        }
+
         super.onPause();
     }
 
@@ -234,6 +217,21 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
                 }
 
                 break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if(!getIntent().hasExtra("720")||
+                !getIntent().hasExtra("800")||
+                getIntent().hasExtra("900")||
+                getIntent().hasExtra("1080")||
+                getIntent().hasExtra("1050")||
+                getIntent().hasExtra("1440")||
+                getIntent().hasExtra("1200")||
+                getIntent().hasExtra("1600")) {
+            super.onBackPressed();
         }
     }
 }
