@@ -44,6 +44,7 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
     public static final String HD_Resolution = "HD_Walls";
     public static final String Wide_Resolution = "WIDE_Walls";
     private SharedPreferences mSettings;
+    public Intent startIntent;
     String str1;
     String str2;
     int a;
@@ -60,6 +61,11 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
         manager = getSupportFragmentManager();
         genresHD = new GenresHD();
         genresWide = new GenresWide();
+
+        startIntent = new Intent(Intent.ACTION_MAIN);
+        startIntent.addCategory(Intent.CATEGORY_HOME);
+        startIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
 
         transaction = manager.beginTransaction();
 
@@ -220,6 +226,7 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
         }
     }
 
+
     @Override
     public void onBackPressed() {
 
@@ -231,7 +238,8 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
                 getIntent().hasExtra("1440")||
                 getIntent().hasExtra("1200")||
                 getIntent().hasExtra("1600")) {
-            super.onBackPressed();
+            startActivity(startIntent);
+            Log.d(LOG_TAG,"Pabotaet BblXoD!!");
         }
     }
 }
