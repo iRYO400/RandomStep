@@ -31,14 +31,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".formats.HD_Choice" >
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".formats.Wide_Choice" >
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+
         </activity>
 
     </application>
