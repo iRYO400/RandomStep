@@ -27,15 +27,16 @@
             android:label="Launcher" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH_LONG_PRESS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
-        <activity android:name=".formats.HD_Choice" >
-
-        </activity>
-        <activity android:name=".formats.Wide_Choice" >
-
-        </activity>
+        <activity android:name=".formats.HD_Choice" ></activity>
+        <activity android:name=".formats.Wide_Choice" ></activity>
 
     </application>
 

@@ -13,8 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="#ffff23e9"
-        android:text="GENRES-HD"
-        android:onClick="onClick" />
+        android:text="GENRES-HD" />
 
 
 </RelativeLayout>

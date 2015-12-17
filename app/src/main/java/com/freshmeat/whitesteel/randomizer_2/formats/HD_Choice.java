@@ -69,6 +69,7 @@ public class HD_Choice extends Activity implements View.OnClickListener {
 
         }
             startActivity(intent);
+            finish();
             Log.d(LOG_TAG, "checked: " + HD[listViewHD.getCheckedItemPosition()]);
         }
         else if(listViewHD.getCheckedItemPosition()!=-1){

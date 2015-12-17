@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.os.PersistableBundle;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,7 +31,7 @@ public class Launcher extends FragmentActivity {
         array = getResources().getStringArray(R.array.array720);
         n = (int) Math.floor(Math.random() * array.length);
         Log.d(TAG, array[n]);
-           /* if (getIntent().hasExtra("Ch720")) {
+            if (getIntent().hasExtra("Ch720")) {
                 array = getResources().getStringArray(R.array.array720);
                 n = (int) Math.floor(Math.random() * array.length);
                 Log.d(TAG, array[n]);
@@ -52,7 +53,7 @@ public class Launcher extends FragmentActivity {
                 Log.d(TAG, array[n]);
             } else {
                 Log.d(TAG, "Fail, repair it NOW!");
-            }*/
+            }
             return array[n];
         }
 
@@ -104,9 +105,12 @@ public class Launcher extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        loadBitmap();
-        finish();
+        if(getApplicationContext()==null){
+             loadBitmap();
+        }
+        else {
+            finish();
+        }
 
     }
 

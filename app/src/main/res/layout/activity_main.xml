@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/switcher1">
 
-
         <Switch
             android:layout_width="wrap_content"
             android:layout_height="50dp"
@@ -27,15 +26,37 @@
             android:enabled="false" />
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/HDButton"
+        android:layout_below="@+id/switcher1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="btnClick" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/GENRESHD"
+        android:layout_below="@+id/HDButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="onClick" />
+
     <LinearLayout
         android:id="@+id/hdWideContainer"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="vertical"
-        android:layout_below="@+id/switcher1">
-
+        android:layout_below="@+id/GENRESHD">
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/genres_container"
@@ -45,9 +66,6 @@
         android:layout_centerHorizontal="true"
         android:orientation="vertical"
         android:weightSum="1">
-
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -57,20 +75,7 @@
         android:layout_below="@+id/genres_container"
         android:layout_centerHorizontal="true"
         android:orientation="vertical">
-
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Before"
-        android:id="@+id/textView"
-        android:layout_below="@+id/support_container"
-        android:layout_alignRight="@+id/support_container"
-        android:layout_alignEnd="@+id/support_container"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

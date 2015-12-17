@@ -19,8 +19,6 @@ public class HD_Resol_btn extends Fragment {
         final View view = inflater.inflate(R.layout.hd_choice_btn, container, false);
         final View button = view.findViewById(R.id.resolutionHD);
 
-
-
         button.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
