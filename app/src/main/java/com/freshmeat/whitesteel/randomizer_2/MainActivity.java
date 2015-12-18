@@ -102,9 +102,9 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
     public void onBackPressed() {
 
         if(!getIntent().hasExtra("720")||
-                getIntent().hasExtra("900")||
-                getIntent().hasExtra("1080")||
-                getIntent().hasExtra("1440")) {
+                !getIntent().hasExtra("900")||
+                !getIntent().hasExtra("1080")||
+                !getIntent().hasExtra("1440")) {
             startActivity(startIntent);
             finish();
             Log.d(LOG_TAG,"Pabotaet BblXoD!!");

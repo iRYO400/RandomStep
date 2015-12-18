@@ -6,14 +6,10 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.inputmethodservice.ExtractEditText;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
-import android.text.Html;
 import android.util.Log;
-
 import java.util.ArrayList;
 
 public class NoticeDialogFragment extends DialogFragment {

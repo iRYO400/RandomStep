@@ -10,7 +10,6 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
         <activity
             android:name=".MainActivity"
             android:icon="@drawable/icon1"
@@ -20,24 +19,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Launcher"
             android:icon="@drawable/icon2"
             android:label="Launcher" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".formats.HD_Choice" >
             <intent-filter>
-                <action android:name="android.intent.action.SEARCH_LONG_PRESS" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".formats.HD_Choice" ></activity>
-        <activity android:name=".formats.Wide_Choice" ></activity>
-
     </application>
 
 </manifest>

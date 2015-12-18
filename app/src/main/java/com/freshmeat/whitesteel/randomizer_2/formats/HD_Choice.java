@@ -51,7 +51,7 @@ public class HD_Choice extends Activity implements View.OnClickListener {
         Intent intent = new Intent(this, MainActivity.class);
         switch (listViewHD.getCheckedItemPosition()){
             case 0:
-                intent.putExtra("720", a);
+                intent.putExtra("Ch720", a);
                 Log.d(LOG_TAG, "chose" + HD[listViewHD.getCheckedItemPosition()]);
                 break;
             case 1:
