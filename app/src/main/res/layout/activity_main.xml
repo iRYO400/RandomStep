@@ -50,5 +50,15 @@
         android:layout_alignParentStart="true"
         android:onClick="onClick" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Settings"
+        android:id="@+id/btnSave"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/GENRESHD"
+        android:layout_alignEnd="@+id/GENRESHD"
+        android:onClick="btnSavePress" />
+
 
 </RelativeLayout>

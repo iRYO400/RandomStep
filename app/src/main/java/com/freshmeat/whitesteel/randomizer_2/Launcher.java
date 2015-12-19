@@ -1,15 +1,11 @@
 package com.freshmeat.whitesteel.randomizer_2;
 
 import android.app.WallpaperManager;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.util.AttributeSet;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.View;
-
 
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
@@ -28,51 +24,89 @@ public class Launcher extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadBitmap();
+        if(getIntent().hasExtra("Ch720")){
+            loadBitmap720();
+        } else if(getIntent().hasExtra("Ch900")){
+            loadBitmap900();
+        } else if (getIntent().hasExtra("Ch1080")){
+            loadBitmap1080();
+        }else if(getIntent().hasExtra("Ch1440")){
+            loadBitmap1440();
+        }else {
+            loadBitmap();
+        }
         finish();
         Log.d(TAG, "Succesfully onCreate method");
+    }
 
+    private void loadBitmap720() {
+        Picasso.with(this)
+                .load(array720())
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .into(target);
+        Log.d(TAG,"Loading 720p");
+    }
+    public String array720(){
+        array = getResources().getStringArray(R.array.array720);
+        randomNumber = (byte) Math.random()*array.length;
+        Log.d(TAG, array[randomNumber]);
+        return array[randomNumber];
+    }
+
+    private void loadBitmap900() {
+        Picasso.with(this)
+                .load(array900())
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .into(target);
+        Log.d(TAG,"Loading 900p");
+    }
+    public String array900(){
+        array = getResources().getStringArray(R.array.array900);
+        randomNumber = (byte) Math.random()*array.length;
+        Log.d(TAG, array[randomNumber]);
+        return array[randomNumber];
+    }
+
+    private void loadBitmap1080() {
+        Picasso.with(this)
+                .load(array1080())
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .into(target);
+        Log.d(TAG,"Loading 1080p");
+    }
+    public String array1080(){
+        array = getResources().getStringArray(R.array.array1080);
+        randomNumber = (byte) Math.random()*array.length;
+        Log.d(TAG, array[randomNumber]);
+        return array[randomNumber];
+    }
+
+    private void loadBitmap1440() {
+        Picasso.with(this)
+                .load(array1440())
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .into(target);
+        Log.d(TAG,"Loading 1080p");
+    }
+    public String array1440(){
+        array = getResources().getStringArray(R.array.array1440);
+        randomNumber = (byte) Math.random()*array.length;
+        Log.d(TAG, array[randomNumber]);
+        return array[randomNumber];
     }
 
     public String arrayZone() {
-
         array = getResources().getStringArray(R.array.array720);
         randomNumber = (int) Math.floor(Math.random() * array.length);
         Log.d(TAG, array[randomNumber]);
-//            if (getIntent().hasExtra("Ch720")) {
-//                array = getResources().getStringArray(R.array.array720);
-//                n = (int) Math.floor(Math.random() * array.length);
-//                Log.d(TAG, array[n]);
-//
-//            }
-//            if (getIntent().hasExtra("Ch900")) {
-//                array = getResources().getStringArray(R.array.array900);
-//                n = (int) Math.floor(Math.random() * array.length);
-//                Log.d(TAG, array[n]);
-//            }
-//            if (getIntent().hasExtra("Ch1080")) {
-//                array = getResources().getStringArray(R.array.array1080);
-//                n = (int) Math.floor(Math.random() * array.length);
-//                Log.d(TAG, array[n]);
-//            }
-//            if (getIntent().hasExtra("Ch1440")) {
-//                array = getResources().getStringArray(R.array.array1440);
-//                n = (int) Math.floor(Math.random() * array.length);
-//                Log.d(TAG, array[n]);
-//            } else {
-//                Log.d(TAG, "Fail, repair it NOW!");
-//            }
             return array[randomNumber];
-
         }
-
-
     private void loadBitmap() {
         Picasso.with(this)
                 .load(arrayZone())
                 .memoryPolicy(MemoryPolicy.NO_CACHE)
                 .into(target);
-        Log.d(TAG,"inTO TARGET");
+        Log.d(TAG,"Default Array");
     }
 
 
@@ -110,11 +144,5 @@ public class Launcher extends FragmentActivity {
                 Log.d(TAG, "Cannot");
             }
         }
-
-
-
-
     }
-
-
 }
