@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
 import com.freshmeat.whitesteel.randomizer_2.formats.HD_Choice;
 
 import java.util.ArrayList;
@@ -20,19 +21,23 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
 
     final String LOG_TAG = "mLOGs";
     private FragmentManager manager;
-    private SharedPreferences.Editor editor;
-    public static final String APP_PREFERENCE = "mySettings";
-    public static final String HD_Switchers = "HD_Switcher";
-    public static final String HD_Resolution = "HD_Walls";
 
+    public static final String RESOLUTION_SETTINGS = "settingsR";
+    public static final String GENRES_SETTINGS = "settingsG";
+    public static final String APP_PREFERENCE_RESOLUTION = "Resolution";
+    public static final String APP_PREFERENCE_GENRE = "Genres";
+
+    private SharedPreferences.Editor editor;
+    private SharedPreferences.Editor editorGenre;
     private SharedPreferences sharedPreferences;
-    final String RESOLUTION_SETTINGS = "settingsR";
-    final String GENRES_SETTINGS = "settingsG";
+    private SharedPreferences sharedPreferencesGenres;
 
     int number;
+    int[] arrayOfInt;
 
     public Intent startIntent;
     Intent intentResolution;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +45,13 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
         setContentView(R.layout.activity_main);
         manager = getSupportFragmentManager();
 
-
         startIntent = new Intent(Intent.ACTION_MAIN);
-//        startIntent.addCategory(Intent.CATEGORY_HOME);
         startIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        sharedPreferences = getPreferences(MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(RESOLUTION_SETTINGS , MODE_PRIVATE);
+        sharedPreferencesGenres = getSharedPreferences(GENRES_SETTINGS, MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        loadSaves();
+        editorGenre = sharedPreferencesGenres.edit();
     }
 
     public void btnClick(View view) {
@@ -55,102 +59,112 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
         startActivity(intent);
     }
 
-    private void saveSaves(){
+    //Размер экрана
+    private void saveResolution() {
         intentResolution = getIntent();
-        if(intentResolution.hasExtra("720")){
-            editor.putString(RESOLUTION_SETTINGS, "Ch720");
+        if (intentResolution.hasExtra("720")) {
+            editor.putString(RESOLUTION_SETTINGS, "Genre720");
             Log.d(LOG_TAG, "Ch720 сохранен");
-        }else if(intentResolution.hasExtra("900")){
-            editor.putString(RESOLUTION_SETTINGS, "Ch900");
+        } else if (intentResolution.hasExtra("900")) {
+            editor.putString(RESOLUTION_SETTINGS, "Genre900");
             Log.d(LOG_TAG, "Ch900 сохранен");
-        }else if(intentResolution.hasExtra("1080")){
-            editor.putString(RESOLUTION_SETTINGS, "Ch1080");
+        } else if (intentResolution.hasExtra("1080")) {
+            editor.putString(RESOLUTION_SETTINGS, "Genre1080");
             Log.d(LOG_TAG, "Ch1080 сохранен");
-        }else if(intentResolution.hasExtra("1440")){
-            editor.putString(RESOLUTION_SETTINGS, "Ch1440");
+        } else if (intentResolution.hasExtra("1440")) {
+            editor.putString(RESOLUTION_SETTINGS, "Genre1440");
             Log.d(LOG_TAG, "Ch1440 сохранен");
-        }
-        else {
+        } else {
             Log.d(LOG_TAG, "Nothing to save");
         }
     }
 
-    private void loadSaves(){
-        sharedPreferences = getPreferences(MODE_PRIVATE);
+
+
+    //Жанры
+    //Преобразует ArrayList в int[]
+    protected void makeGenreArray(ArrayList<Integer> arrayList) {
+        int i = 0;
+        arrayOfInt = new int[arrayList.size()];
+        for (Integer n : arrayList) {
+            arrayOfInt[i++] = n;
+        }
+        for (int j : arrayOfInt) {
+            switch (arrayOfInt[j]){
+                case 0:
+                    Log.d(LOG_TAG, "Fuck 1 " + arrayList);
+                    editorGenre.putString(GENRES_SETTINGS, "CG");
+                    editorGenre.commit();
+                    break;
+                case 1:
+                    Log.d(LOG_TAG, "Fuck 2");
+                    editorGenre.putString(GENRES_SETTINGS, "Games");
+                    break;
+                case 2:
+                    Log.d(LOG_TAG, "Fuck 3");
+                    //editor.putString(GENRES_SETTINGS, "World");
+                    break;
+                case 3:
+                    Log.d(LOG_TAG, "Fuck 4");
+                    //editor.putString(GENRES_SETTINGS, "Sport");
+                    break;
+                case 4:
+                    editor.putString(GENRES_SETTINGS, "Auto");
+                    break;
+            }
+        }
+    }
+
+
+    private void loadResolution() {
+        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+
         String savedSettings = sharedPreferences.getString(RESOLUTION_SETTINGS, "");
-        Intent intentDialog = new Intent(this, NoticeDialogFragment.class);
+        Intent intentDialog = getIntent();
         intentDialog.putExtra(savedSettings, number);
         Log.d(LOG_TAG, savedSettings);
     }
 
-    protected void saveGenres(String text){
-        if(text.equals("Ch720")){
-            Log.d(LOG_TAG, text + " saveGenres");
-        }else if(text.equals("Ch900")){
-            Log.d(LOG_TAG, text + " saveGenres");
-        }
-    }
 
-    protected void saveGenre(ArrayList arrayList){
-
-            switch (){
-                case 0:
-                    Log.d(LOG_TAG, "РАБОТАЕТ!!!!!!");
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-            }
-        }
-
-
-
-    @Override
-    public void onDialogPositiveClick(DialogFragment dialog) {
-
-    }
-
-        @Override
-    public void onDialogNegativeClick(DialogFragment dialog) {
-
-    }
-
-    public void onClick(View v){
-        switch (v.getId()){
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.GENRESHD:
                 DialogFragment dialog1 = new NoticeDialogFragment();
-                if(getIntent().hasExtra("720")){
+                if (getIntent().hasExtra("720") || getIntent().hasExtra("Genre720")) {
                     dialog1.show(getSupportFragmentManager(), "NoticeDialogFragment1");
-
-                }
-                else if(getIntent().hasExtra("900")){
+                } else if (getIntent().hasExtra("900") || getIntent().hasExtra("Genre900")) {
                     dialog1.show(getSupportFragmentManager(), "NoticeDialogFragment2");
-
-                }
-                else if(getIntent().hasExtra("1080")){
+                } else if (getIntent().hasExtra("1080") || getIntent().hasExtra("Genre1080")) {
                     dialog1.show(getSupportFragmentManager(), "NoticeDialogFragment3");
-
-                }
-                else if(getIntent().hasExtra("1440")){
+                } else if (getIntent().hasExtra("1440") || getIntent().hasExtra("Genre1440")) {
                     dialog1.show(getSupportFragmentManager(), "NoticeDialogFragment4");
-
-                }
-                else {
+                } else {
                     Toast.makeText(getApplicationContext(), "Haven't choosen Resolution", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
-        editor.commit();
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+
+
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+
     }
 
 
-    public void btnSavePress(View view){
-        saveSaves();
+
+    public void btnSavePress(View view) {
+        saveResolution();
+        editor.commit();
+    }
+
+    public void btnLoadPress(View view) {
+        loadResolution();
     }
 
     @Override

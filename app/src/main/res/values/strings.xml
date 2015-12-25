@@ -18,19 +18,12 @@
         <item>2560x1440</item>
     </string-array>
 
-    <string-array name="Wide">
-        <item>1280x800</item>
-        <item>1680x1050</item>
-        <item>1900x1200</item>
-        <item>2560x1600</item>
-    </string-array>
-
     <string-array name="GenresString">
         <item>Creative Graphics</item>
         <item>Games</item>
         <item>Travel and World</item>
-        <item>Movies</item>
-        <item>3D and Abstract</item>
+        <item>Sport</item>
+        <item>Auto</item>
     </string-array>
 
     <string-array name="array720">
@@ -41,9 +34,6 @@
         <item>http://img2.goodfon.ru/original/1920x1080/9/cb/devushka-aziatka-leto-zont-reka.jpg</item>
         <item>http://img3.goodfon.ru/original/1920x1080/0/f9/halston-sage-holston-seydzh.jpg</item>
         <item>http://img3.goodfon.ru/original/1920x1080/6/f7/habarovskiy-kray-rossiya-zima.jpg</item>
-        <item>http://www.avto.goodfon.ru/download/mazda-rx-vision-concept-mazda-5986/1920x1080</item>
-        <item>http://img1.goodfon.ru/original/1920x1080/6/db/kosmicheskiy-korabl-planeta-2112.jpg</item>
-
     </string-array>
 
     <string-array name="array900">
@@ -55,8 +45,11 @@
     </string-array>
 
     <string-array name="array1440">
-        <item>http://protest.ru/pics/esline.jpg</item>
+        <item>http://www.avto.goodfon.ru/download/mazda-rx-vision-concept-mazda-5986/1920x1080</item>
+        <item>http://img1.goodfon.ru/original/1920x1080/6/db/kosmicheskiy-korabl-planeta-2112.jpg</item>
     </string-array>
+
+
 
 
     </resources>

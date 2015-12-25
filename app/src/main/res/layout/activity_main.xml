@@ -60,5 +60,16 @@
         android:layout_alignEnd="@+id/GENRESHD"
         android:onClick="btnSavePress" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Load Settings"
+        android:id="@+id/btnLoad"
+        android:layout_gravity="bottom"
+        android:onClick="btnLoadPress"
+        android:layout_alignTop="@+id/btnSave"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>

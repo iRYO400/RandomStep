@@ -1,6 +1,7 @@
 package com.freshmeat.whitesteel.randomizer_2;
 
 import android.app.WallpaperManager;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -18,12 +19,23 @@ public class Launcher extends FragmentActivity {
 
 
     final String TAG= "mLOGs";
+
     protected String[] array;
     protected int randomNumber;
+
+    MainActivity mainActivity = new MainActivity();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        loadBitmaps();
+        finish();
+        Log.d(TAG, "Succesfully onCreate method");
+    }
+
+
+    private void loadBitmaps(){
         if(getIntent().hasExtra("Ch720")){
             loadBitmap720();
         } else if(getIntent().hasExtra("Ch900")){
@@ -35,11 +47,10 @@ public class Launcher extends FragmentActivity {
         }else {
             loadBitmap();
         }
-        finish();
-        Log.d(TAG, "Succesfully onCreate method");
     }
 
     private void loadBitmap720() {
+
         Picasso.with(this)
                 .load(array720())
                 .memoryPolicy(MemoryPolicy.NO_CACHE)

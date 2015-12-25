@@ -15,18 +15,21 @@ import java.util.ArrayList;
 
 public class NoticeDialogFragment extends DialogFragment {
 
-    NoticeDialogListener mListener;
+
     ArrayList mSelectedItems;
     final String LOG_TAG = "mLOGs";
     int b;
 
     MainActivity mainActivity = new MainActivity();
+    Launcher launcher= new Launcher();
 
     public interface NoticeDialogListener {
         public void onDialogPositiveClick(DialogFragment dialog);
 
         public void onDialogNegativeClick(DialogFragment dialog);
     }
+
+    NoticeDialogListener mListener;
 
 
     @Override
@@ -50,9 +53,10 @@ public class NoticeDialogFragment extends DialogFragment {
         mSelectedItems = new ArrayList<>();
         final Intent intent = getActivity().getIntent();
 
+
         // Build the dialog and set up the button click handlers
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        if (intent.hasExtra("720")) {
+        if (intent.hasExtra("720")||intent.hasExtra("Genre720")) {
             Log.d(LOG_TAG, "first");
             builder.setTitle("Genres in 720p")
                     .setMultiChoiceItems(R.array.GenresString, null, new DialogInterface.OnMultiChoiceClickListener() {
@@ -60,7 +64,6 @@ public class NoticeDialogFragment extends DialogFragment {
                         public void onClick(DialogInterface dialogInterface, int which, boolean isChecked) {
                             if (isChecked) {
                                 mSelectedItems.add(which);
-                                Log.d(LOG_TAG, "add()" + which);
                             } else if (mSelectedItems.contains(which)) {
                                 mSelectedItems.remove(Integer.valueOf(which));
                             }
@@ -68,11 +71,9 @@ public class NoticeDialogFragment extends DialogFragment {
                     })
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // Send the positive button event back to the host activity
-                            mainActivity.saveGenres("Ch720");
-//                            mainActivity.saveGenre(mSelectedItems);
-                            intent.putExtra("Ch720", b);
-                            Log.d(LOG_TAG, "Has been defused 720" + mSelectedItems);
+                            //Отправка ArrayList в MainActivity
+                            mainActivity.makeGenreArray(mSelectedItems);
+                            Log.d(LOG_TAG, "Has been defused 720 " + mSelectedItems);
                             mListener.onDialogPositiveClick(NoticeDialogFragment.this);
                         }
                     })
@@ -84,7 +85,7 @@ public class NoticeDialogFragment extends DialogFragment {
                     });
 
         }
-        if (intent.hasExtra("900")) {
+        if (intent.hasExtra("900")||intent.hasExtra("Genre900")) {
             Log.d(LOG_TAG, "second");
             builder.setTitle("Genres in 900p")
 
@@ -100,9 +101,8 @@ public class NoticeDialogFragment extends DialogFragment {
                     })
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // Send the positive button event back to the host activity
-                            mainActivity.saveGenres("Ch900");
-                            intent.putExtra("Ch900", b);
+                            //Отправка ArrayList в MainActivity
+                            mainActivity.makeGenreArray(mSelectedItems);
                             Log.d(LOG_TAG, "Has been defused 900" + mSelectedItems);
                             mListener.onDialogPositiveClick(NoticeDialogFragment.this);
                         }
@@ -116,7 +116,7 @@ public class NoticeDialogFragment extends DialogFragment {
                     });
 
         }
-        if (intent.hasExtra("1080")) {
+        if (intent.hasExtra("1080")||intent.hasExtra("Genre1080")) {
             Log.d(LOG_TAG, "third");
             builder.setTitle("Genres in 1080p")
                     .setMultiChoiceItems(R.array.GenresString, null, new DialogInterface.OnMultiChoiceClickListener() {
@@ -131,8 +131,8 @@ public class NoticeDialogFragment extends DialogFragment {
                     })
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // Send the positive button event back to the host activity
-                            intent.putExtra("Ch1080", b);
+                            //Отправка ArrayList в MainActivity
+                            mainActivity.makeGenreArray(mSelectedItems);
                             Log.d(LOG_TAG, "Has been defused 1080" + mSelectedItems);
                             mListener.onDialogPositiveClick(NoticeDialogFragment.this);
                         }
@@ -145,7 +145,7 @@ public class NoticeDialogFragment extends DialogFragment {
                     });
 
         }
-        if (intent.hasExtra("1440")) {
+        if (intent.hasExtra("1440")||intent.hasExtra("Genre1440")) {
             Log.d(LOG_TAG, "fourth");
             builder.setTitle("Genres in 1440p")
                     .setMultiChoiceItems(R.array.GenresString, null, new DialogInterface.OnMultiChoiceClickListener() {
@@ -160,8 +160,8 @@ public class NoticeDialogFragment extends DialogFragment {
                     })
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // Send the positive button event back to the host activity
-                            intent.putExtra("Ch1440", b);
+                            //Отправка ArrayList в MainActivity
+                            mainActivity.makeGenreArray(mSelectedItems);
                             Log.d(LOG_TAG, "Has been defused 1440" + mSelectedItems);
                             mListener.onDialogPositiveClick(NoticeDialogFragment.this);
                         }
