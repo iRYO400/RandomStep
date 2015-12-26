@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -20,20 +19,18 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
 
 
     final String LOG_TAG = "mLOGs";
-    private FragmentManager manager;
-
+    //SharedPreference настройки
     public static final String RESOLUTION_SETTINGS = "settingsR";
     public static final String GENRES_SETTINGS = "settingsG";
     public static final String APP_PREFERENCE_RESOLUTION = "Resolution";
     public static final String APP_PREFERENCE_GENRE = "Genres";
-
     private SharedPreferences.Editor editor;
     private SharedPreferences.Editor editorGenre;
     private SharedPreferences sharedPreferences;
     private SharedPreferences sharedPreferencesGenres;
 
-    int number;
-    int[] arrayOfInt;
+
+
 
     public Intent startIntent;
     Intent intentResolution;
@@ -43,7 +40,6 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        manager = getSupportFragmentManager();
 
         startIntent = new Intent(Intent.ACTION_MAIN);
         startIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -54,62 +50,75 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
         editorGenre = sharedPreferencesGenres.edit();
     }
 
+    //Intent to HD_Choice
     public void btnClick(View view) {
         Intent intent = new Intent(this, HD_Choice.class);
         startActivity(intent);
     }
 
+
     //Размер экрана
     private void saveResolution() {
         intentResolution = getIntent();
         if (intentResolution.hasExtra("720")) {
-            editor.putString(RESOLUTION_SETTINGS, "Genre720");
+            editor.putString(APP_PREFERENCE_RESOLUTION, "Genre720");
             Log.d(LOG_TAG, "Ch720 сохранен");
         } else if (intentResolution.hasExtra("900")) {
-            editor.putString(RESOLUTION_SETTINGS, "Genre900");
+            editor.putString(APP_PREFERENCE_RESOLUTION, "Genre900");
             Log.d(LOG_TAG, "Ch900 сохранен");
         } else if (intentResolution.hasExtra("1080")) {
-            editor.putString(RESOLUTION_SETTINGS, "Genre1080");
+            editor.putString(APP_PREFERENCE_RESOLUTION, "Genre1080");
             Log.d(LOG_TAG, "Ch1080 сохранен");
         } else if (intentResolution.hasExtra("1440")) {
-            editor.putString(RESOLUTION_SETTINGS, "Genre1440");
+            editor.putString(APP_PREFERENCE_RESOLUTION, "Genre1440");
             Log.d(LOG_TAG, "Ch1440 сохранен");
         } else {
             Log.d(LOG_TAG, "Nothing to save");
         }
     }
 
-
-
     //Жанры
     //Преобразует ArrayList в int[]
-    protected void makeGenreArray(ArrayList<Integer> arrayList) {
-        int i = 0;
-        arrayOfInt = new int[arrayList.size()];
-        for (Integer n : arrayList) {
-            arrayOfInt[i++] = n;
+    protected void makeGenreArray() {
+        Intent intentGenres = getIntent();
+        ArrayList<Integer> arrayList = null;
+        if(intentGenres.hasExtra("720Bundle")){
+            arrayList = intentGenres.getIntegerArrayListExtra("720Bundle");
+            Log.d(LOG_TAG, "Extra 720Bundle " + arrayList);
+        } else if (intentGenres.hasExtra("900Bundle")){
+            arrayList = intentGenres.getIntegerArrayListExtra("900Bundle");
+        }else if (intentGenres.hasExtra("1080Bundle")){
+            arrayList = intentGenres.getIntegerArrayListExtra("1080Bundle");
+        }else if (intentGenres.hasExtra("1440Bundle")){
+            arrayList = intentGenres.getIntegerArrayListExtra("1440Bundle");
+        }else {
+            Log.d(LOG_TAG, "Nothing to save");
         }
-        for (int j : arrayOfInt) {
-            switch (arrayOfInt[j]){
+        makeAnArray(arrayList);
+    }
+
+    private void makeAnArray(ArrayList<Integer> arrayList){
+        for( int j = 0; j < arrayList.size(); j ++) {
+            switch (arrayList.get(j)) {
                 case 0:
-                    Log.d(LOG_TAG, "Fuck 1 " + arrayList);
-                    editorGenre.putString(GENRES_SETTINGS, "CG");
-                    editorGenre.commit();
+                    Log.d(LOG_TAG, "CG");
+                    editorGenre.putString(APP_PREFERENCE_GENRE, "CG");
                     break;
                 case 1:
-                    Log.d(LOG_TAG, "Fuck 2");
-                    editorGenre.putString(GENRES_SETTINGS, "Games");
+                    Log.d(LOG_TAG, "Games");
+                    editorGenre.putString(APP_PREFERENCE_GENRE, "Games");
                     break;
                 case 2:
-                    Log.d(LOG_TAG, "Fuck 3");
-                    //editor.putString(GENRES_SETTINGS, "World");
+                    Log.d(LOG_TAG, "World");
+                    editorGenre.putString(APP_PREFERENCE_GENRE, "World");
                     break;
                 case 3:
-                    Log.d(LOG_TAG, "Fuck 4");
-                    //editor.putString(GENRES_SETTINGS, "Sport");
+                    Log.d(LOG_TAG, "Sport");
+                    editorGenre.putString(APP_PREFERENCE_GENRE, "Sport");
                     break;
                 case 4:
-                    editor.putString(GENRES_SETTINGS, "Auto");
+                    Log.d(LOG_TAG, "Auto");
+                    editorGenre.putString(APP_PREFERENCE_GENRE, "Auto");
                     break;
             }
         }
@@ -117,15 +126,14 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
 
 
     private void loadResolution() {
-        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-
         String savedSettings = sharedPreferences.getString(RESOLUTION_SETTINGS, "");
-        Intent intentDialog = getIntent();
-        intentDialog.putExtra(savedSettings, number);
+        String savedGenres = sharedPreferencesGenres.getString(GENRES_SETTINGS, "");
+        Intent intentLoad = getIntent();
+        intentLoad.putExtra(savedSettings, 1);
         Log.d(LOG_TAG, savedSettings);
     }
 
-
+    //Button for opening "Choose Genres"
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.GENRESHD:
@@ -147,20 +155,18 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
-
-
     }
 
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
-
     }
 
 
-
     public void btnSavePress(View view) {
+        makeGenreArray();
         saveResolution();
-        editor.commit();
+        editor.apply();
+        editorGenre.apply();
     }
 
     public void btnLoadPress(View view) {

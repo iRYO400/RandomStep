@@ -52,7 +52,7 @@ public class NoticeDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         mSelectedItems = new ArrayList<>();
         final Intent intent = getActivity().getIntent();
-
+        final Bundle bundle = new Bundle();
 
         // Build the dialog and set up the button click handlers
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -71,8 +71,7 @@ public class NoticeDialogFragment extends DialogFragment {
                     })
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            //Отправка ArrayList в MainActivity
-                            mainActivity.makeGenreArray(mSelectedItems);
+                            intent.putIntegerArrayListExtra("720Bundle", mSelectedItems);
                             Log.d(LOG_TAG, "Has been defused 720 " + mSelectedItems);
                             mListener.onDialogPositiveClick(NoticeDialogFragment.this);
                         }
@@ -102,7 +101,7 @@ public class NoticeDialogFragment extends DialogFragment {
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Отправка ArrayList в MainActivity
-                            mainActivity.makeGenreArray(mSelectedItems);
+                            intent.putIntegerArrayListExtra("900Bundle", mSelectedItems);
                             Log.d(LOG_TAG, "Has been defused 900" + mSelectedItems);
                             mListener.onDialogPositiveClick(NoticeDialogFragment.this);
                         }
@@ -114,7 +113,6 @@ public class NoticeDialogFragment extends DialogFragment {
                             mListener.onDialogNegativeClick(NoticeDialogFragment.this);
                         }
                     });
-
         }
         if (intent.hasExtra("1080")||intent.hasExtra("Genre1080")) {
             Log.d(LOG_TAG, "third");
@@ -132,7 +130,7 @@ public class NoticeDialogFragment extends DialogFragment {
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Отправка ArrayList в MainActivity
-                            mainActivity.makeGenreArray(mSelectedItems);
+
                             Log.d(LOG_TAG, "Has been defused 1080" + mSelectedItems);
                             mListener.onDialogPositiveClick(NoticeDialogFragment.this);
                         }
@@ -161,7 +159,7 @@ public class NoticeDialogFragment extends DialogFragment {
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Отправка ArrayList в MainActivity
-                            mainActivity.makeGenreArray(mSelectedItems);
+
                             Log.d(LOG_TAG, "Has been defused 1440" + mSelectedItems);
                             mListener.onDialogPositiveClick(NoticeDialogFragment.this);
                         }
@@ -172,11 +170,7 @@ public class NoticeDialogFragment extends DialogFragment {
                             mListener.onDialogNegativeClick(NoticeDialogFragment.this);
                         }
                     });
-
         }
         return builder.create();
-
-
-
     }
 }
