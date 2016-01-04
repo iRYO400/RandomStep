@@ -1,7 +1,6 @@
 package com.freshmeat.whitesteel.randomizer_2;
 
 import android.app.WallpaperManager;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -13,22 +12,23 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class Launcher extends FragmentActivity {
 
-
     final String TAG= "mLOGs";
-
     protected String[] array;
-    protected int randomNumber;
-
-    MainActivity mainActivity = new MainActivity();
-
+    protected int randomNumber = 2;
+    TinyDB tinyDB;
+    ArrayList<String> arrayListGenres;
+    ArrayList<String> arrayListFull;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        arrayListGenres = new ArrayList<String>();
+        arrayListFull = new ArrayList<String>();
         loadBitmaps();
         finish();
         Log.d(TAG, "Succesfully onCreate method");
@@ -36,17 +36,18 @@ public class Launcher extends FragmentActivity {
 
 
     private void loadBitmaps(){
-        if(getIntent().hasExtra("Ch720")){
-            loadBitmap720();
-        } else if(getIntent().hasExtra("Ch900")){
-            loadBitmap900();
-        } else if (getIntent().hasExtra("Ch1080")){
-            loadBitmap1080();
-        }else if(getIntent().hasExtra("Ch1440")){
-            loadBitmap1440();
-        }else {
-            loadBitmap();
+        switch (tinyDB.getString("MyResolution")){
+            case "Resolution720":
+                break;
+            case "Resolution900":
+                break;
+            case "Resolution1080":
+                break;
+            case "Resolution1440":
+                break;
         }
+
+        loadBitmap720();
     }
 
     private void loadBitmap720() {
@@ -58,10 +59,37 @@ public class Launcher extends FragmentActivity {
         Log.d(TAG,"Loading 720p");
     }
     public String array720(){
-        array = getResources().getStringArray(R.array.array720);
-        randomNumber = (byte) Math.random()*array.length;
-        Log.d(TAG, array[randomNumber]);
-        return array[randomNumber];
+
+        tinyDB = new TinyDB(this);
+        arrayListGenres = tinyDB.getListString("MyGenres");
+        for(int i = 0; i < arrayListGenres.size(); i++){
+            switch (arrayListGenres.get(i)) {
+                case "CG":
+                    ArrayList<String> arrayListCG = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.CG)));
+                    arrayListFull.addAll(arrayListCG);
+                    break;
+                case "Games":
+                    ArrayList<String> arrayListGames = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.Games)));
+                    arrayListFull.addAll(arrayListGames);
+                    break;
+                case "World":
+                    ArrayList<String> arrayListWorld = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.World)));
+                    arrayListFull.addAll(arrayListWorld);
+                    break;
+                case "Sport":
+                    ArrayList<String> arrayListSport = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.Sport)));
+                    arrayListFull.addAll(arrayListSport);
+                    break;
+                case "Auto":
+                    ArrayList<String> arrayListAuto = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.Auto)));
+                    arrayListFull.addAll(arrayListAuto);
+                    break;
+            }
+        }
+        Log.d(TAG, " array720 " + arrayListGenres + " " + arrayListFull);
+        //randomNumber = (byte) Math.random()arrayListFull.size();
+        Log.d(TAG, arrayListFull.get(randomNumber));
+        return arrayListFull.get(randomNumber);
     }
 
     private void loadBitmap900() {

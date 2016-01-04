@@ -26,6 +26,22 @@
         <item>Auto</item>
     </string-array>
 
+    <string-array name="CG">
+        <item>http://www.hdwallpapers.in/download/jellyfish_digital_artwork-1920x1080.jpg</item>
+    </string-array>
+    <string-array name="Games">
+        <item>http://www.hdwallpapers.in/download/the_evil_within_the_consequence-1920x1080.jpg</item>
+    </string-array>
+    <string-array name="World">
+        <item>http://www.hdwallpapers.in/download/stairway_to_heaven-1920x1080.jpg</item>
+    </string-array>
+    <string-array name="Sport">
+        <item>http://www.hdwallpapers.in/download/skiing_in_france-1920x1200.jpg</item>
+    </string-array>
+    <string-array name="Auto">
+        <item>http://www.hdwallpapers.in/download/kawasaki_z1000sx-1920x1080.jpg</item>
+    </string-array>
+
     <string-array name="array720">
         <item>http://www.stereofanat.com/anaglyph/anaglyph3d/3d_stereo_anaglyph_stereofanat.com_104.jpg</item>
         <item>http://41.media.tumblr.com/0bf6d793c0b2a9112e88b1fabe6c31e0/tumblr_npydgwPYLb1sr8zk0o1_1280.jpg</item>

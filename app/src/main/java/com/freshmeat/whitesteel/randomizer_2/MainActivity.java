@@ -1,37 +1,24 @@
 package com.freshmeat.whitesteel.randomizer_2;
 
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
 import com.freshmeat.whitesteel.randomizer_2.formats.HD_Choice;
-
 import java.util.ArrayList;
+
 
 
 public class MainActivity extends FragmentActivity implements NoticeDialogFragment.NoticeDialogListener {
 
 
     final String LOG_TAG = "mLOGs";
-    //SharedPreference настройки
-    public static final String RESOLUTION_SETTINGS = "settingsR";
-    public static final String GENRES_SETTINGS = "settingsG";
-    public static final String APP_PREFERENCE_RESOLUTION = "Resolution";
-    public static final String APP_PREFERENCE_GENRE = "Genres";
-    private SharedPreferences.Editor editor;
-    private SharedPreferences.Editor editorGenre;
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences sharedPreferencesGenres;
 
-
-
-
+    //https://github.com/kcochibili/TinyDB--Android-Shared-Preferences-Turbo
+    TinyDB tinyDB;
     public Intent startIntent;
     Intent intentResolution;
 
@@ -43,11 +30,7 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
 
         startIntent = new Intent(Intent.ACTION_MAIN);
         startIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        sharedPreferences = getSharedPreferences(RESOLUTION_SETTINGS , MODE_PRIVATE);
-        sharedPreferencesGenres = getSharedPreferences(GENRES_SETTINGS, MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-        editorGenre = sharedPreferencesGenres.edit();
+        loadResolution();
     }
 
     //Intent to HD_Choice
@@ -59,22 +42,24 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
 
     //Размер экрана
     private void saveResolution() {
+        tinyDB = new TinyDB(this);
         intentResolution = getIntent();
         if (intentResolution.hasExtra("720")) {
-            editor.putString(APP_PREFERENCE_RESOLUTION, "Genre720");
+            tinyDB.putString("MyResolution", "Resolution720");
             Log.d(LOG_TAG, "Ch720 сохранен");
         } else if (intentResolution.hasExtra("900")) {
-            editor.putString(APP_PREFERENCE_RESOLUTION, "Genre900");
+            tinyDB.putString("MyResolution", "Resolution900");
             Log.d(LOG_TAG, "Ch900 сохранен");
         } else if (intentResolution.hasExtra("1080")) {
-            editor.putString(APP_PREFERENCE_RESOLUTION, "Genre1080");
+            tinyDB.putString("MyResolution", "Resolution1080");
             Log.d(LOG_TAG, "Ch1080 сохранен");
         } else if (intentResolution.hasExtra("1440")) {
-            editor.putString(APP_PREFERENCE_RESOLUTION, "Genre1440");
+            tinyDB.putString("MyResolution", "Resolution1440");
             Log.d(LOG_TAG, "Ch1440 сохранен");
         } else {
             Log.d(LOG_TAG, "Nothing to save");
         }
+        Log.d(LOG_TAG, "Дошел до editor.apply");
     }
 
     //Жанры
@@ -98,39 +83,40 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
     }
 
     private void makeAnArray(ArrayList<Integer> arrayList){
+        ArrayList<String> arrayListGenres = new ArrayList<String>();
+        tinyDB = new TinyDB(this);
         for( int j = 0; j < arrayList.size(); j ++) {
             switch (arrayList.get(j)) {
                 case 0:
                     Log.d(LOG_TAG, "CG");
-                    editorGenre.putString(APP_PREFERENCE_GENRE, "CG");
+                    arrayListGenres.add("CG");
                     break;
                 case 1:
                     Log.d(LOG_TAG, "Games");
-                    editorGenre.putString(APP_PREFERENCE_GENRE, "Games");
+                    arrayListGenres.add("Games");
                     break;
                 case 2:
                     Log.d(LOG_TAG, "World");
-                    editorGenre.putString(APP_PREFERENCE_GENRE, "World");
+                    arrayListGenres.add("World");
                     break;
                 case 3:
                     Log.d(LOG_TAG, "Sport");
-                    editorGenre.putString(APP_PREFERENCE_GENRE, "Sport");
+                    arrayListGenres.add("Sport");
                     break;
                 case 4:
                     Log.d(LOG_TAG, "Auto");
-                    editorGenre.putString(APP_PREFERENCE_GENRE, "Auto");
+                    arrayListGenres.add("Auto");
                     break;
             }
+            tinyDB.putListString("MyGenres", arrayListGenres);
         }
     }
 
-
     private void loadResolution() {
-        String savedSettings = sharedPreferences.getString(RESOLUTION_SETTINGS, "");
-        String savedGenres = sharedPreferencesGenres.getString(GENRES_SETTINGS, "");
-        Intent intentLoad = getIntent();
-        intentLoad.putExtra(savedSettings, 1);
-        Log.d(LOG_TAG, savedSettings);
+        tinyDB = new TinyDB(this);
+        String loadedResolution = tinyDB.getString("MyResolution");
+        ArrayList<String> loadedGenres = tinyDB.getListString("MyGenres");
+        Log.d(LOG_TAG, " LOADING " + " " + loadedResolution + " " + loadedGenres);
     }
 
     //Button for opening "Choose Genres"
@@ -155,23 +141,15 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
+        saveResolution();
+        makeGenreArray();
+
     }
 
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
     }
 
-
-    public void btnSavePress(View view) {
-        makeGenreArray();
-        saveResolution();
-        editor.apply();
-        editorGenre.apply();
-    }
-
-    public void btnLoadPress(View view) {
-        loadResolution();
-    }
 
     @Override
     public void onBackPressed() {
