@@ -130,7 +130,7 @@ public class NoticeDialogFragment extends DialogFragment {
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Отправка ArrayList в MainActivity
-
+                            intent.putIntegerArrayListExtra("1080Bundle", mSelectedItems);
                             Log.d(LOG_TAG, "Has been defused 1080" + mSelectedItems);
                             mListener.onDialogPositiveClick(NoticeDialogFragment.this);
                         }
@@ -159,7 +159,7 @@ public class NoticeDialogFragment extends DialogFragment {
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Отправка ArrayList в MainActivity
-
+                            intent.putIntegerArrayListExtra("1440Bundle", mSelectedItems);
                             Log.d(LOG_TAG, "Has been defused 1440" + mSelectedItems);
                             mListener.onDialogPositiveClick(NoticeDialogFragment.this);
                         }

@@ -22,50 +22,97 @@
         <item>Creative Graphics</item>
         <item>Games</item>
         <item>Travel and World</item>
-        <item>Sport</item>
-        <item>Auto</item>
+        <item>Movies</item>
+        <item>Crafts</item>
     </string-array>
 
-    <string-array name="CG">
+    <string-array name="CGHD">
+<item>http://www.hdwallpapers.in/download/puss_in_boot-1600x900.jpg</item>
+    </string-array>
+
+    <string-array name="GamesHD">
+<item>http://www.hdwallpapers.in/download/the_crew_wild_run-1600x900.jpg</item>
+    </string-array>
+
+    <string-array name="WorldHD">
+<item>http://www.hdwallpapers.in/download/beautiful_island-1600x900.jpg</item>
+    </string-array>
+
+    <string-array name="MoviesHD">
+<item>http://www.hdwallpapers.in/download/star_wars_bb_8-1600x900.jpg</item>
+    </string-array>
+
+    <string-array name="CraftsHD">
+<item>http://www.hdwallpapers.in/download/boeing_phantom_ray-1600x900.jpg</item>
+    </string-array>
+
+    <string-array name="CG2K">
         <item>http://www.hdwallpapers.in/download/jellyfish_digital_artwork-1920x1080.jpg</item>
     </string-array>
-    <string-array name="Games">
+
+    <string-array name="Games2K">
         <item>http://www.hdwallpapers.in/download/the_evil_within_the_consequence-1920x1080.jpg</item>
+        <item>http://www.hdwallpapers.in/download/assassins_creed_chronicles_russia-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/battlefield_4_night_operations-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/call_of_duty_advanced_warfare_game-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/the_witcher_3_wild_hunt_shani-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/the_witcher_3_wild_hunt_the_succubus-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/horizon_zero_dawn_game-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/2016_horizon_zero_dawn-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/star_wars_battlefront_twilight_company-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/witcher_3_wild_hunt_strumpet-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/star_citizen_spaceship-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/far_cry_primal-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/fallout_4_ncr_ranger-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/portal_2_robots_atlas_p_body-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/call_of_duty_black_ops_3_specialist_prophet-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/dragon_age_inquisition_game-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/call_of_duty_black_ops_3_no_fly_zone-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/metal_gear_solid_v_tactical_espionage_operations-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/until_dawn_game-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/bloodborne_the_old_hunters-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/jack_the_ripper-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/world_of_tanks_holidays-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/object_268_world_of_tanks-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/linda_halo_5_guardians-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/hellblade_2016_game-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/hellblade_2016_game-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/destiny_the_taken_king_hunter-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/for_honor-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/tom_clancys_the_division_new_york-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/gears_of_war_4_protagonist-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/spartan_locke_halo_5_guardians-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/recore_2016_game-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/unravel_game-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/generals_the_witcher_3_wild_hunt-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/2015_rise_of_the_tomb_raider-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/rise_of_the_tomb_raider_video_game-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/assassins_creed_syndicate_2015_game-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/rise_of_the_tomb_raider_concept_art-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/lara_croft_rise_of_the_tomb_raider-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/tom_clancys_rainbow_six_siege-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/star_wars_battlefront-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/far_cry_4_season_pass-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/far_cry_4_valley_of_the_yetis-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/tom_clancys_the_division-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/middle_earth_shadow_of_mordor-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/lords_of_the_fallen-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/m4_sherman_world_of_tanks-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/t110e4_world_of_tanks-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/prime_world-2560x1440.jpg</item>
+        <item>http://www.hdwallpapers.in/download/scalebound_game-2560x1440.jpg</item>
     </string-array>
-    <string-array name="World">
+    <string-array name="World2K">
         <item>http://www.hdwallpapers.in/download/stairway_to_heaven-1920x1080.jpg</item>
     </string-array>
-    <string-array name="Sport">
-        <item>http://www.hdwallpapers.in/download/skiing_in_france-1920x1200.jpg</item>
-    </string-array>
-    <string-array name="Auto">
-        <item>http://www.hdwallpapers.in/download/kawasaki_z1000sx-1920x1080.jpg</item>
+
+    <string-array name="Movies2K">
+        <item>http://www.hdwallpapers.in/download/star_wars_bb_8-2560x1440.jpg</item>
     </string-array>
 
-    <string-array name="array720">
-        <item>http://www.stereofanat.com/anaglyph/anaglyph3d/3d_stereo_anaglyph_stereofanat.com_104.jpg</item>
-        <item>http://41.media.tumblr.com/0bf6d793c0b2a9112e88b1fabe6c31e0/tumblr_npydgwPYLb1sr8zk0o1_1280.jpg</item>
-        <item>http://40.media.tumblr.com/b1d0cdfb54173f545def0f31fb8f19be/tumblr_npxfkk4NwI1sr8zk0o1_1280.jpg</item>
-        <item>http://41.media.tumblr.com/793655a7b66f66b3f6b27d2c9cbbf353/tumblr_nohpfzpILZ1sr8zk0o1_1280.jpg</item>
-        <item>http://img2.goodfon.ru/original/1920x1080/9/cb/devushka-aziatka-leto-zont-reka.jpg</item>
-        <item>http://img3.goodfon.ru/original/1920x1080/0/f9/halston-sage-holston-seydzh.jpg</item>
-        <item>http://img3.goodfon.ru/original/1920x1080/6/f7/habarovskiy-kray-rossiya-zima.jpg</item>
+    <string-array name="Crafts2K">
+        <item>http://www.hdwallpapers.in/download/boeing_phantom_ray-2560x1440.jpg</item>
     </string-array>
-
-    <string-array name="array900">
-        <item>http://www.hdkartinki.ru/hellpanel/thumbs/8/kartinka-temnyi-elf-3129.jpg</item>
-    </string-array>
-
-    <string-array name="array1080">
-        <item>http://www.hdkartinki.ru/hellpanel/thumbs/7/kartinka-yastreb-2565.jpg</item>
-    </string-array>
-
-    <string-array name="array1440">
-        <item>http://www.avto.goodfon.ru/download/mazda-rx-vision-concept-mazda-5986/1920x1080</item>
-        <item>http://img1.goodfon.ru/original/1920x1080/6/db/kosmicheskiy-korabl-planeta-2112.jpg</item>
-    </string-array>
-
-
 
 
     </resources>

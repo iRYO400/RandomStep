@@ -5,11 +5,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
 
+    <uses-sdk
+        android:maxSdkVersion="23"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:label="@string/app_name">
         <activity
             android:name=".MainActivity"
             android:icon="@drawable/icon1"
@@ -22,7 +23,8 @@
         <activity
             android:name=".Launcher"
             android:icon="@drawable/icon2"
-            android:label="Launcher" >
+            android:label="Launcher"
+            android:theme="@style/Theme.Transparent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

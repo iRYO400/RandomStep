@@ -1,5 +1,10 @@
 <resources>
 
     <color name="black_overlay">#66000000</color>
+    <color name="primary_material_light">#bdbdbd</color>
+    <color name="legacy_primary">#00e6e6e6</color>
+    <color name="holo_primary">#000000</color>
+    <color name="transColor">#00FFFFFF</color>
+    <color name="grey">#00909090</color>
 
 </resources>

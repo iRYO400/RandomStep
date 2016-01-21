@@ -1,187 +1,159 @@
 package com.freshmeat.whitesteel.randomizer_2;
 
 import android.app.WallpaperManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.mikhaellopez.circularfillableloaders.CircularFillableLoaders;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class Launcher extends FragmentActivity {
 
-    final String TAG= "mLOGs";
-    protected String[] array;
-    protected int randomNumber = 2;
-    TinyDB tinyDB;
-    ArrayList<String> arrayListGenres;
-    ArrayList<String> arrayListFull;
+
+    final String TAG = "mLOGs";
+
+    private TinyDB tinyDB;
+    private ArrayList<String> randomizedArrayList;
+    private int randomInt;
+    CircularFillableLoaders circularFillableLoaders;
+    LoadAndSetPicAsyncTask loadAndSetPicAsyncTask;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        arrayListGenres = new ArrayList<String>();
-        arrayListFull = new ArrayList<String>();
-        loadBitmaps();
-        finish();
-        Log.d(TAG, "Succesfully onCreate method");
-    }
+        setContentView(R.layout.activity_launcher);
+        circularFillableLoaders = (CircularFillableLoaders)findViewById(R.id.circularFillableLoaders);
+        randomizedArrayList = new ArrayList<>();
+        Resources res = getResources();
+        Drawable drawable = res.getDrawable(R.drawable.icon2);
 
+        loadAndSetPicAsyncTask = new LoadAndSetPicAsyncTask();
+        loadBitmaps();
+    }
 
     private void loadBitmaps(){
+        tinyDB = new TinyDB(Launcher.this);
         switch (tinyDB.getString("MyResolution")){
             case "Resolution720":
+                Log.d(TAG, "1280 720");
+                loadBitmapHD(1280, 720);
                 break;
             case "Resolution900":
+                Log.d(TAG, "1600 900");
+                loadBitmapHD(1600, 900);
                 break;
             case "Resolution1080":
+                Log.d(TAG, "1920 1080");
+                loadBitmap2K(1920, 1080);
                 break;
             case "Resolution1440":
+                Log.d(TAG, "2560 1440");
+                loadBitmap2K(2560, 1440);
                 break;
         }
-
-        loadBitmap720();
     }
 
-    private void loadBitmap720() {
-
-        Picasso.with(this)
-                .load(array720())
+    //Bitmap на 720-900px
+    private void loadBitmapHD(int a, int b) {
+        Picasso.with(Launcher.this)
+                .load(randomizedStringHD())
                 .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .error(R.drawable.icon2)
+                .resize(a, b)
                 .into(target);
-        Log.d(TAG,"Loading 720p");
     }
-    public String array720(){
-
-        tinyDB = new TinyDB(this);
-        arrayListGenres = tinyDB.getListString("MyGenres");
-        for(int i = 0; i < arrayListGenres.size(); i++){
-            switch (arrayListGenres.get(i)) {
-                case "CG":
-                    ArrayList<String> arrayListCG = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.CG)));
-                    arrayListFull.addAll(arrayListCG);
-                    break;
-                case "Games":
-                    ArrayList<String> arrayListGames = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.Games)));
-                    arrayListFull.addAll(arrayListGames);
-                    break;
-                case "World":
-                    ArrayList<String> arrayListWorld = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.World)));
-                    arrayListFull.addAll(arrayListWorld);
-                    break;
-                case "Sport":
-                    ArrayList<String> arrayListSport = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.Sport)));
-                    arrayListFull.addAll(arrayListSport);
-                    break;
-                case "Auto":
-                    ArrayList<String> arrayListAuto = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.Auto)));
-                    arrayListFull.addAll(arrayListAuto);
-                    break;
-            }
-        }
-        Log.d(TAG, " array720 " + arrayListGenres + " " + arrayListFull);
-        //randomNumber = (byte) Math.random()arrayListFull.size();
-        Log.d(TAG, arrayListFull.get(randomNumber));
-        return arrayListFull.get(randomNumber);
+    private String randomizedStringHD(){
+        tinyDB = new TinyDB(Launcher.this);
+        randomizedArrayList = tinyDB.getListString("HD_OptimizedArray");
+        randomInt = (byte) Math.floor(Math.random()*randomizedArrayList.size());
+        Log.d(TAG, "It's RandomInt " + randomInt);
+        return randomizedArrayList.get(randomInt);
     }
-
-    private void loadBitmap900() {
-        Picasso.with(this)
-                .load(array900())
+    //Bitmap на 1080-1440px
+    private void loadBitmap2K(int a, int b) {
+        Picasso.with(Launcher.this)
+                .load(randomizedString2K())
                 .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .error(R.drawable.icon2)
+                .resize(a, b)
                 .into(target);
-        Log.d(TAG,"Loading 900p");
     }
-    public String array900(){
-        array = getResources().getStringArray(R.array.array900);
-        randomNumber = (byte) Math.random()*array.length;
-        Log.d(TAG, array[randomNumber]);
-        return array[randomNumber];
-    }
-
-    private void loadBitmap1080() {
-        Picasso.with(this)
-                .load(array1080())
-                .memoryPolicy(MemoryPolicy.NO_CACHE)
-                .into(target);
-        Log.d(TAG,"Loading 1080p");
-    }
-    public String array1080(){
-        array = getResources().getStringArray(R.array.array1080);
-        randomNumber = (byte) Math.random()*array.length;
-        Log.d(TAG, array[randomNumber]);
-        return array[randomNumber];
-    }
-
-    private void loadBitmap1440() {
-        Picasso.with(this)
-                .load(array1440())
-                .memoryPolicy(MemoryPolicy.NO_CACHE)
-                .into(target);
-        Log.d(TAG,"Loading 1080p");
-    }
-    public String array1440(){
-        array = getResources().getStringArray(R.array.array1440);
-        randomNumber = (byte) Math.random()*array.length;
-        Log.d(TAG, array[randomNumber]);
-        return array[randomNumber];
-    }
-
-    public String arrayZone() {
-        array = getResources().getStringArray(R.array.array720);
-        randomNumber = (int) Math.floor(Math.random() * array.length);
-        Log.d(TAG, array[randomNumber]);
-            return array[randomNumber];
-        }
-    private void loadBitmap() {
-        Picasso.with(this)
-                .load(arrayZone())
-                .memoryPolicy(MemoryPolicy.NO_CACHE)
-                .into(target);
-        Log.d(TAG,"Default Array");
+    private String randomizedString2K(){
+        tinyDB = new TinyDB(Launcher.this);
+        randomizedArrayList = tinyDB.getListString("2K_OptimizedArray");
+        randomInt = (byte) Math.floor(Math.random()*randomizedArrayList.size());
+        Log.d(TAG, "It's RandomInt " + randomInt);
+        return randomizedArrayList.get(randomInt);
     }
 
 
-    private Target target = new Target() {
-
+    public Target target = new Target() {
         @Override
         public void onBitmapFailed(Drawable errorDrawable) {
-            Log.d(TAG, "fail");
         }
-
         @Override
         public void onPrepareLoad(Drawable placeHolderDrawable) {
-            if (placeHolderDrawable != null) {
-                Log.d(TAG, "prepare");
-            }
         }
-
         @Override
         public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
             Log.d(TAG, "loaded");
-            setBitmapWallpaper(bitmap);
-            Log.d(TAG, "Width "+ bitmap.getWidth());
-            Log.d(TAG, "Height "+ bitmap.getHeight());
+            loadAndSetPicAsyncTask.execute(bitmap);
         }
     };
 
 
-    public void setBitmapWallpaper(Bitmap bitmapWallpaper) {
-        if(target!=null) {
-            WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
-            Log.d(TAG, "setBitmap");
-            try {
-                wallpaperManager.setBitmap(bitmapWallpaper);
-            } catch (IOException e) {
-                Log.d(TAG, "Cannot");
+
+    class LoadAndSetPicAsyncTask extends AsyncTask<Bitmap, Integer,Void>{
+
+
+        @Override
+        protected Void doInBackground(Bitmap... params) {
+            Log.d(TAG, "Clearing Cache");
+
+            Bitmap bitmap = params[0];
+            setBitmapWallpaper(bitmap);
+            Glide.get(Launcher.this)
+                    .clearDiskCache();
+            return null;
+        }
+
+
+        public void setBitmapWallpaper(Bitmap bitmapWallpaper) {
+            if (bitmapWallpaper != null) {
+
+                WallpaperManager wallpaperManager = WallpaperManager.getInstance(Launcher.this);
+                Log.d(TAG, "Width "+ bitmapWallpaper.getWidth());
+                Log.d(TAG, "Height "+ bitmapWallpaper.getHeight());
+                Log.d(TAG, "setBitmap");
+                try {
+                    wallpaperManager.setBitmap(bitmapWallpaper);
+                } catch (IOException e) {
+                    Log.d(TAG, "Cannot");
+                }
             }
         }
     }
 }
+
+
+
+
+
+

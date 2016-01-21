@@ -7,9 +7,11 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-import com.freshmeat.whitesteel.randomizer_2.formats.HD_Choice;
-import java.util.ArrayList;
 
+import com.freshmeat.whitesteel.randomizer_2.formats.HD_Choice;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class MainActivity extends FragmentActivity implements NoticeDialogFragment.NoticeDialogListener {
@@ -18,18 +20,16 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
     final String LOG_TAG = "mLOGs";
 
     //https://github.com/kcochibili/TinyDB--Android-Shared-Preferences-Turbo
-    TinyDB tinyDB;
-    public Intent startIntent;
-    Intent intentResolution;
+    private TinyDB tinyDB;
+    private Intent intentResolution;
+    private ArrayList<String> arrayListGenres;
+    ArrayList<String> arrayListFull;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        startIntent = new Intent(Intent.ACTION_MAIN);
-        startIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         loadResolution();
     }
 
@@ -40,7 +40,7 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
     }
 
 
-    //Размер экрана
+    //Сохранение размера экрана
     private void saveResolution() {
         tinyDB = new TinyDB(this);
         intentResolution = getIntent();
@@ -62,8 +62,8 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
         Log.d(LOG_TAG, "Дошел до editor.apply");
     }
 
-    //Жанры
-    //Преобразует ArrayList в int[]
+
+    //Обработка разрешения
     protected void makeGenreArray() {
         Intent intentGenres = getIntent();
         ArrayList<Integer> arrayList = null;
@@ -82,6 +82,8 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
         makeAnArray(arrayList);
     }
 
+
+    //Выбор жанров
     private void makeAnArray(ArrayList<Integer> arrayList){
         ArrayList<String> arrayListGenres = new ArrayList<String>();
         tinyDB = new TinyDB(this);
@@ -112,6 +114,7 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
         }
     }
 
+    //Загрузка разрешения
     private void loadResolution() {
         tinyDB = new TinyDB(this);
         String loadedResolution = tinyDB.getString("MyResolution");
@@ -133,7 +136,7 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
                 } else if (getIntent().hasExtra("1440") || getIntent().hasExtra("Genre1440")) {
                     dialog1.show(getSupportFragmentManager(), "NoticeDialogFragment4");
                 } else {
-                    Toast.makeText(getApplicationContext(), "Haven't choosen Resolution", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please, choose genre(-s).", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -143,17 +146,17 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
     public void onDialogPositiveClick(DialogFragment dialog) {
         saveResolution();
         makeGenreArray();
-
+        loadBitmaps();
     }
 
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
     }
 
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        Toast.makeText(this,"Click BACK again",Toast.LENGTH_SHORT).show();
         if (!getIntent().hasExtra("720") ||
                 !getIntent().hasExtra("900") ||
                 !getIntent().hasExtra("1080") ||
@@ -161,5 +164,88 @@ public class MainActivity extends FragmentActivity implements NoticeDialogFragme
             finish();
             Log.d(LOG_TAG, "Pabotaet BblXoD!!");
         }
+    }
+
+    public void loadBitmaps(){
+        switch (tinyDB.getString("MyResolution")){
+            case "Resolution720":
+                arrayFullHDHD();
+                break;
+            case "Resolution900":
+                arrayFullHDHD();
+                break;
+            case "Resolution1080":
+                arrayFullHD2K();
+                break;
+            case "Resolution1440":
+                arrayFullHD2K();
+                break;
+        }
+    }
+
+    //2K resolution
+    public void arrayFullHD2K(){
+        arrayListFull = new ArrayList<>();
+        tinyDB = new TinyDB(this);
+        arrayListGenres = tinyDB.getListString("MyGenres");
+        for(int i = 0; i < arrayListGenres.size(); i++){
+            switch (arrayListGenres.get(i)) {
+                case "CG":
+                    ArrayList<String> arrayListCG = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.CG2K)));
+                    arrayListFull.addAll(arrayListCG);
+                    break;
+                case "Games":
+                    ArrayList<String> arrayListGames = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.Games2K)));
+                    arrayListFull.addAll(arrayListGames);
+                    break;
+                case "World":
+                    ArrayList<String> arrayListWorld = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.World2K)));
+                    arrayListFull.addAll(arrayListWorld);
+                    break;
+                case "Sport":
+                    ArrayList<String> arrayListSport = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.Movies2K)));
+                    arrayListFull.addAll(arrayListSport);
+                    break;
+                case "Auto":
+                    ArrayList<String> arrayListAuto = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.Crafts2K)));
+                    arrayListFull.addAll(arrayListAuto);
+                    break;
+            }
+        }
+        tinyDB.putListString("2K_OptimizedArray", arrayListFull);
+        Log.d(LOG_TAG, " loadBitmap array2K " + arrayListGenres + " " + arrayListFull);
+    }
+
+    //HD Resolution
+    public void arrayFullHDHD(){
+        arrayListFull = new ArrayList<>();
+        tinyDB = new TinyDB(this);
+        arrayListGenres = tinyDB.getListString("MyGenres");
+        for(int i = 0; i < arrayListGenres.size(); i++){
+            switch (arrayListGenres.get(i)) {
+                case "CG":
+                    ArrayList<String> arrayListCG = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.CGHD)));
+                    arrayListFull.addAll(arrayListCG);
+                    break;
+                case "Games":
+                    ArrayList<String> arrayListGames = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.GamesHD)));
+                    arrayListFull.addAll(arrayListGames);
+                    break;
+                case "World":
+                    ArrayList<String> arrayListWorld = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.WorldHD)));
+                    arrayListFull.addAll(arrayListWorld);
+                    break;
+                case "Sport":
+                    ArrayList<String> arrayListSport = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.MoviesHD)));
+                    arrayListFull.addAll(arrayListSport);
+                    break;
+                case "Auto":
+                    ArrayList<String> arrayListAuto = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.CraftsHD)));
+                    arrayListFull.addAll(arrayListAuto);
+                    break;
+            }
+        }
+        tinyDB.putListString("HD_OptimizedArray", arrayListFull);
+        Log.d(LOG_TAG, " loadBitmap arrayHD " + arrayListGenres + " " + arrayListFull);
     }
 }
