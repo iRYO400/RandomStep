@@ -2,4 +2,24 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <dimen name="blog_card_elevation">4dp</dimen>
+    <dimen name="blog_image_thumb_dim">100dp</dimen>
+    <dimen name="blog_tint_view_height">90dp</dimen>
+    <dimen name="blog_btn_like_dim">44dp</dimen>
+
+
+    <!-- Guillotine screen dimens-->
+    <dimen name="guillotine_small_margin">24dp</dimen>
+    <dimen name="guillotine_medium_margin">16dp</dimen>
+    <dimen name="guillotine_large_margin">100dp</dimen>
+    <dimen name="guillotine_divider_height">40dp</dimen>
+
+    <dimen name="guillotine_item_text_size">20sp</dimen>
+    <dimen name="guillotine_actionbar_background_view_height">35dp</dimen>
+
+    <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html -->
+    <dimen name="navigation_drawer_width">240dp</dimen>
 </resources>

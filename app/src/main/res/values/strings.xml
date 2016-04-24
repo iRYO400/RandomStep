@@ -1,118 +1,114 @@
 <resources>
-    <string name="app_name">Randomizer_2</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">UltraHD R-Wallpapers</string>
+    <string name="app_settings">UltraHD R-Settings</string>
+	<string name="app_Launcher">UltraHD R-LAUNCH</string>
+	<string name="title_activity_licence" translatable="false">LicenceActivity</string>
+    <string name="title_font" translatable="false">fonts/title.ttf</string>
+    <string name="digit_keyboard_font" translatable="false">fonts/canaro_extra_bold.ttf</string>
+    <string name="inside_font" translatable="false">fonts/inside.otf</string>
+    <string name="pref_previously_started_main" translatable="false">FirstUse</string>
+    <string name="pref_previously_started_main2" translatable="false">FirstMain2</string>
     <string name="action_settings">Settings</string>
-    <string name="choose_genre">Choose Genre</string>
-    <string name="ADD">ADD</string>
-    <string name="HD_Resolution">HD_resolution</string>
-    <string name="Wide_Resolution">Wide_btn</string>
+    <string name="choose_genres">Genres</string>
     <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
-    <string name="genres_pick">Genres</string>
+    <string name="DialogResTitle">Image Resolution</string>
+    <string name="profile">PROFILE</string>
+    <string name="feed">FEED</string>
+    <string name="activity">ACTIVITY</string>
+    <string name="settings">SETTINGS</string>
+    <string name="genre">GENRES</string>
+    <string name="RELOAD">Reload</string>
+
+	<string name="community">Want to be first and able to save your favorite wallpapers? Join to our group at Facebook or Vk.</string>
+
+	<string name="launcherAlert">Does not enough patrons!</string>
+	<string name="noInternet">No Internet connection.</string>
+
+	<string name="lessPool">Add some genres.</string>
+	<string name="tooPool">Remove some genres.</string>
+	<string name="readyPool">Launch!</string>
+	<string name="addToPool">Add to favorite list.</string>
+
+	<string name="wallRes">Wallpaper Resolution</string>
+	<string name="deviceRes">Your Smartphone Resolution</string>
+	<string name="infoWidth">Width: </string>
+	<string name="infoHeight">Height: </string>
+	<string name="fitWidth">Fit to Width</string>
+	<string name="fitHeight">Fit to Center</string>
+
+	<string name="license">License</string>
+	<string name="facebook">Facebook</string>
+	<string name="vk">VK</string>
+
+    <string name="support_me">Rate this app</string>
+    <string name="support_message">If you enjoy using this app, please, rate it on Google Play. Thank You for support!</string>
+    <string name="support_later">Remind me later</string>
+    <string name="support_now">Rate app</string>
+    <string name="support_no">No, thanks</string>
+
+	<string name="cropAndSet">CROP and Set</string>
+    <string name="help">Help and Tips</string>
+    <string name="help1">Hello-hello!</string>
+    <string name="helpTip">Before starting, add your favorite categories of wallpapers. Then click "LAUNCH!".</string>
+
+
+
+    <string name="tip_string2">Data base updates every weekend.</string>
+    <string name="tip_string3">Links to our groups, where You can download for any other devices, in the left sidebar.</string>
+
+	<string name="licenceLink" translatable="false">Official license page
+		<a href="http://freedomdefined.org/Licenses/CC-BY-SA">http://freedomdefined.org/Licenses/CC-BY-SA</a></string>
+	<string name="licence1" translatable="false">	All Wallpapers are licensed under the Free Culture License. This means the pictures
+								are completely free to be used for any legal purpose.</string>
+	<string name="licence2" translatable="false">You are allowed to use and distribute those as long as you do not remove any copyright or trademark notices or other notices that go with them as defined in the Free Culture License.</string>
+	<string name="licence3" translatable="false">You can modify, copy and distribute the photos.</string>
+
 
     <string-array name="HD">
-        <item>1280x720</item>
-        <item>1600x900</item>
-        <item>1920x1080</item>
-        <item>2560x1440</item>
+        <item>FullHD 1080p</item>
+        <item>2K-QuadHD 1440p</item>
+        <item>4K-UltraHD 2160p</item>
     </string-array>
 
-    <string-array name="GenresString">
-        <item>Creative Graphics</item>
-        <item>Games</item>
-        <item>Travel and World</item>
-        <item>Movies</item>
-        <item>Crafts</item>
-    </string-array>
+	<string-array name="helps">
+		<item>Tip #1</item>
+		<item>Tip #2</item>
+		<item>About</item>
+	</string-array>
 
-    <string-array name="CGHD">
-<item>http://www.hdwallpapers.in/download/puss_in_boot-1600x900.jpg</item>
-    </string-array>
+	<string-array name="GenresString">
+		<item>CG and Art</item>
+		<item>Movies</item>
+		<item>World</item>
+		<item>Crafts</item>
+	</string-array>
 
-    <string-array name="GamesHD">
-<item>http://www.hdwallpapers.in/download/the_crew_wild_run-1600x900.jpg</item>
-    </string-array>
+	<string-array name="CG_Art">
+		<item>3D and Abstract</item>
+		<item>Fantasy</item>
+		<item>Gaming</item>
+		<item>Vector</item>
+	</string-array>
 
-    <string-array name="WorldHD">
-<item>http://www.hdwallpapers.in/download/beautiful_island-1600x900.jpg</item>
-    </string-array>
+	<string-array name="Movies">
+		<item>Cartoons</item>
+		<item>Celebrities</item>
+		<item>Films</item>
+	</string-array>
 
-    <string-array name="MoviesHD">
-<item>http://www.hdwallpapers.in/download/star_wars_bb_8-1600x900.jpg</item>
-    </string-array>
+	<string-array name="World">
+		<item>Animals</item>
+		<item>Cities</item>
+		<item>Nature</item>
+		<item>Seasons</item>
+		<item>Space</item>
+	</string-array>
 
-    <string-array name="CraftsHD">
-<item>http://www.hdwallpapers.in/download/boeing_phantom_ray-1600x900.jpg</item>
-    </string-array>
-
-    <string-array name="CG2K">
-        <item>http://www.hdwallpapers.in/download/jellyfish_digital_artwork-1920x1080.jpg</item>
-    </string-array>
-
-    <string-array name="Games2K">
-        <item>http://www.hdwallpapers.in/download/the_evil_within_the_consequence-1920x1080.jpg</item>
-        <item>http://www.hdwallpapers.in/download/assassins_creed_chronicles_russia-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/battlefield_4_night_operations-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/call_of_duty_advanced_warfare_game-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/the_witcher_3_wild_hunt_shani-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/the_witcher_3_wild_hunt_the_succubus-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/horizon_zero_dawn_game-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/2016_horizon_zero_dawn-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/star_wars_battlefront_twilight_company-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/witcher_3_wild_hunt_strumpet-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/star_citizen_spaceship-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/far_cry_primal-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/fallout_4_ncr_ranger-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/portal_2_robots_atlas_p_body-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/call_of_duty_black_ops_3_specialist_prophet-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/dragon_age_inquisition_game-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/call_of_duty_black_ops_3_no_fly_zone-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/metal_gear_solid_v_tactical_espionage_operations-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/until_dawn_game-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/bloodborne_the_old_hunters-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/jack_the_ripper-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/world_of_tanks_holidays-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/object_268_world_of_tanks-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/linda_halo_5_guardians-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/hellblade_2016_game-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/hellblade_2016_game-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/destiny_the_taken_king_hunter-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/for_honor-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/tom_clancys_the_division_new_york-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/gears_of_war_4_protagonist-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/spartan_locke_halo_5_guardians-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/recore_2016_game-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/unravel_game-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/generals_the_witcher_3_wild_hunt-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/2015_rise_of_the_tomb_raider-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/rise_of_the_tomb_raider_video_game-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/assassins_creed_syndicate_2015_game-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/rise_of_the_tomb_raider_concept_art-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/lara_croft_rise_of_the_tomb_raider-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/tom_clancys_rainbow_six_siege-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/star_wars_battlefront-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/far_cry_4_season_pass-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/far_cry_4_valley_of_the_yetis-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/tom_clancys_the_division-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/middle_earth_shadow_of_mordor-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/lords_of_the_fallen-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/m4_sherman_world_of_tanks-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/t110e4_world_of_tanks-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/prime_world-2560x1440.jpg</item>
-        <item>http://www.hdwallpapers.in/download/scalebound_game-2560x1440.jpg</item>
-    </string-array>
-    <string-array name="World2K">
-        <item>http://www.hdwallpapers.in/download/stairway_to_heaven-1920x1080.jpg</item>
-    </string-array>
-
-    <string-array name="Movies2K">
-        <item>http://www.hdwallpapers.in/download/star_wars_bb_8-2560x1440.jpg</item>
-    </string-array>
-
-    <string-array name="Crafts2K">
-        <item>http://www.hdwallpapers.in/download/boeing_phantom_ray-2560x1440.jpg</item>
-    </string-array>
+	<string-array name="Crafts">
+		<item>Aircraft</item>
+		<item>Bikes</item>
+		<item>Cars</item>
+	</string-array>
 
 
-    </resources>
+</resources>

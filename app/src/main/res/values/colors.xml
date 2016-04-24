@@ -1,10 +1,53 @@
 <resources>
 
     <color name="black_overlay">#66000000</color>
-    <color name="primary_material_light">#bdbdbd</color>
+    <color name="primary_material_light">#d0d0d0</color>
     <color name="legacy_primary">#00e6e6e6</color>
-    <color name="holo_primary">#000000</color>
     <color name="transColor">#00FFFFFF</color>
     <color name="grey">#00909090</color>
+    <color name="primary_text_default_material_light">#de000000</color>
+    <color name="background_material_light">#000000</color>
+    <color name="black">#000000</color>
+    <color name="blackBack">#090909</color>
+    <color name="blackFront">#252525</color>
+    <color name="colorBackground">#070707</color>
+    <color name="myTransparent">#32ffffff</color>
+
+    <color name="textDefaultColor">#000000</color>
+    <color name="textHoveredColor">#FFFFFFFF</color>
+    <color name="littleTabTextColor">#ececec</color>
+    <color name="secondaryText">#cfcfcf</color>
+
+    <color name="slide_1">#4f91ff</color>
+    <color name="slide_2">#fb9c25</color>
+    <color name="slide_3">#5ab55d</color>
+    <color name="slide_4">#ea2d6d</color>
+
+
+    <color name="guillotine_background">#424242</color>
+    <color name="guillotine_background_dark">#212121</color>
+    <color name="mySelected_item_color">#FFEB3B</color>
+    <color name="myColorAccent">#FFEB3B</color>
+    <color name="primary_text_material_dark">#FFEB3B</color>
+
+    <color name="oldColorAccent">#32AD89</color>
+    <color name="oldprimary_text_material_dark">#FFEB3B</color>
+
+    <color name="dialog_title_text">#FFFFFF</color>
+
+    <color name="material_blue_grey_500">#607D8B</color>
+    <color name="material_blue_grey_800">#37474F</color>
+    <color name="material_teal_a400">#1DE9B6</color>
+    <color name="material_red_400">#EF5350</color>
+
+    <color name="wguillotine_background">#607D8B</color>
+    <color name="wguillotine_background_dark">#37474F</color>
+    <color name="wselected_item_color">#EF5350</color>
+    <color name="wcolorAccent">#EF5350</color>
+
+    <color name="sguillotine_background">#444153</color>
+    <color name="sguillotine_background_dark">#383547</color>
+    <color name="sselected_item_color">#30d1d5</color>
+    <color name="scolorAccent">#a01100</color>
 
 </resources>

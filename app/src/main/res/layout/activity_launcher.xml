@@ -1,16 +1,37 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/launcher_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical"
+    android:layout_marginRight="-15dp"
+    android:layout_marginLeft="-15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="15dp"
+    android:background="@drawable/bitch"
+    >
 
-    <com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
-        android:id="@+id/circularFillableLoaders"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo"
-        app:border="true"
-        app:border_width="15dp"
-        app:progress="100"
-        app:wave_amplitude="0.00"
-        app:wave_color="#B71C1C" />
-</RelativeLayout>
+        android:layout_gravity="center">
+
+        <it.michelelacorte.elasticprogressbar.ElasticDownloadView
+            android:id="@+id/elastic_download_view"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textTipLauncher"
+        android:layout_gravity="top|center"
+        android:layout_margin="10dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp" />
+
+</FrameLayout>

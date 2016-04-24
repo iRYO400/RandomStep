@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Randomizer_2.iml" filepath="$PROJECT_DIR$/Randomizer_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RandomWallpapers.iml" filepath="$PROJECT_DIR$/RandomWallpapers.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/picasso-2.5.2/picasso-2.5.2.iml" filepath="$PROJECT_DIR$/picasso-2.5.2/picasso-2.5.2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/applovin-6.1.5/applovin-6.1.5.iml" filepath="$PROJECT_DIR$/applovin-6.1.5/applovin-6.1.5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appodeal-1.14.12/appodeal-1.14.12.iml" filepath="$PROJECT_DIR$/appodeal-1.14.12/appodeal-1.14.12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flurry-analytics-6.2.0/flurry-analytics-6.2.0.iml" filepath="$PROJECT_DIR$/flurry-analytics-6.2.0/flurry-analytics-6.2.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inmobi-5.2.3/inmobi-5.2.3.iml" filepath="$PROJECT_DIR$/inmobi-5.2.3/inmobi-5.2.3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/my-target-4.3.10/my-target-4.3.10.iml" filepath="$PROJECT_DIR$/my-target-4.3.10/my-target-4.3.10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/unity-ads-1.4.7/unity-ads-1.4.7.iml" filepath="$PROJECT_DIR$/unity-ads-1.4.7/unity-ads-1.4.7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yandex-metrica-2.32/yandex-metrica-2.32.iml" filepath="$PROJECT_DIR$/yandex-metrica-2.32/yandex-metrica-2.32.iml" />
     </modules>
   </component>
 </project>
