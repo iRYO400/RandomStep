@@ -1,0 +1,95 @@
+<resources>
+    <string name="app_name">Ultra-HD R-Обои</string>
+    <string name="app_settings">UltraHD R-Настройки</string>
+    <string name="app_Launcher">UltraHD R-ЗАПУСК</string>
+    <string name="action_settings">НАСТРОЙКИ</string>
+    <string name="choose_genres">ЖАНРЫ</string>
+    <string name="ok">OK</string>
+    <string name="DialogResTitle">Разрешение обоев</string>
+    <string name="profile">ПРОФИЛЬ</string>
+    <string name="feed">FEED</string>
+    <string name="activity">ACTIVITY</string>
+    <string name="settings">НАСТРОЙКИ</string>
+    <string name="genre">ЖАНРЫ</string>
+    <string name="RELOAD">Перезарядка</string>
+    <string name="launcherAlert">Не хватает патронов!</string>
+    <string name="noInternet">Нет соединения.</string>
+
+    <string name="support_me">Оцените это приложение</string>
+    <string name="support_message">Если Вам нравится это приложение, пожалуйста, уделите чуточку времени чтобы оценить его. Это займёт не более минуты. Спасибо за Вашу поддержку!</string>
+    <string name="support_later">Напомнить позже</string>
+    <string name="support_now">Оценить сейчас</string>
+    <string name="support_no">Нет, спасибо.</string>
+
+    <string name="help">Помощь и подсказки</string>
+    <string name="helpTip">Перед использованием, выбери любимые категории обоев. Затем кликни "ЗАПУСТИТЬ!".</string>
+
+
+
+    <string name="tip_string2">База пополняется каждые выходные.</string>
+    <string name="tip_string3">Ссылки на наши группы, где Вы сможете скачать обои на любые другие устройства, в боковом левом меню.</string>
+
+
+    <string-array name="HD">
+        <item>FullHD 1080p</item>
+        <item>2K-QuadHD 1440p</item>
+        <item>4K-UltraHD 2160p</item>
+    </string-array>
+
+    <string-array name="helps">
+        <item>Подсказка #1</item>
+        <item>Подсказка #2</item>
+        <item>О приложении</item>
+    </string-array>
+
+    <string-array name="GenresString">
+        <item>CG and Art</item>
+        <item>Movies</item>
+        <item>World</item>
+        <item>Crafts</item>
+    </string-array>
+
+    <string-array name="CG_Art">
+        <item>3D and Abstract</item>
+        <item>Fantasy</item>
+        <item>Gaming</item>
+        <item>Vector</item>
+    </string-array>
+
+    <string-array name="Movies">
+        <item>Cartoons</item>
+        <item>Celebrities</item>
+        <item>Films</item>
+    </string-array>
+
+    <string-array name="World">
+        <item>Animals</item>
+        <item>Cities</item>
+        <item>Nature</item>
+        <item>Seasons</item>
+        <item>Space</item>
+    </string-array>
+
+    <string-array name="Crafts">
+        <item>Aircraft</item>
+        <item>Bikes</item>
+        <item>Cars</item>
+    </string-array>
+
+    <string name="lessPool">Добавь несколько жанров.</string>
+    <string name="tooPool">Убери некоторые жанры.</string>
+    <string name="fitHeight">Подогнать по центру</string>
+    <string name="fitWidth">Подогнать по ширине</string>
+    <string name="infoHeight">Высота:</string>
+    <string name="infoWidth">Ширина:</string>
+    <string name="wallRes">Размер изображения</string>
+    <string name="deviceRes">Разрешение Вашего Смартфона</string>
+    <string name="help1">Привет-привет!</string>
+    <string name="addToPool">Добавить в любимые.</string>
+    <string name="community">Хочешь первым получать обновления и скачивать понравившиеся обои? Вступай в группу на Facebook или Вконтакте.</string>
+    <string name="readyPool">Запустить!</string>
+    <string name="cropAndSet">Обрезать и установить</string>
+    <string name="facebook">Facebook</string>
+    <string name="vk">ВКонтакте</string>
+    <string name="license">Лицензия</string>
+</resources>

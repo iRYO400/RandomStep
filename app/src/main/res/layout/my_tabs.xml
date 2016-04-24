@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.astuetz.PagerSlidingTabStrip
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/materialviewpager_pagerTitleStrip"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textColor="@color/littleTabTextColor"
+    app:pstsPaddingMiddle="true"
+    app:pstsTabTextAlpha="90"
+    app:pstsDividerPadding="50dp"
+    app:pstsIndicatorColor="@color/mySelected_item_color"
+    app:pstsIndicatorHeight="0dp"
+    app:pstsShouldExpand="true"
+    app:pstsTabPaddingLeftRight="40dp"
+    app:pstsTabTextAllCaps="true"
+    tools:background="#A333" />

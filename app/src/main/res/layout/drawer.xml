@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/left_drawer"
+    android:layout_width="220dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/community"
+        android:layout_above="@+id/linearLayout"
+        android:textColor="@color/littleTabTextColor"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="4dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout"
+        android:background="@drawable/btch"
+        android:layout_above="@+id/linearLayout3"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="-19dp"
+        android:layout_marginRight="-19dp"
+        android:layout_marginBottom="-10dp">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/facebook_logo"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="3dp" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnFB"
+            android:text="@string/facebook"
+            android:textColor="@color/text_hover"
+            android:background="@drawable/ripple_guillotine"/>
+    </LinearLayout>
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@drawable/line_separator_secondary"
+        android:layout_above="@+id/linearLayout2"
+        android:id="@+id/linearLayout3"
+        android:layout_marginRight="4dp"
+        android:layout_marginLeft="4dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="-19dp"
+        android:layout_marginRight="-19dp"
+        android:background="@drawable/btch"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/linearLayout2"
+        android:layout_marginTop="-10dp">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/vk"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="3dp" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnVk"
+            android:text="@string/vk"
+            android:textColor="@color/text_hover"
+            android:background="@drawable/ripple_guillotine"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:weightSum="1"
+        android:id="@+id/linearLayout4">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnLicense"
+            android:text="@string/license"
+            android:textColor="@color/text_hover"
+            android:background="@drawable/ripple_guillotine" />
+    </LinearLayout>
+    </RelativeLayout>
