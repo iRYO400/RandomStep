@@ -13,12 +13,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.appodeal.ads.Appodeal;
 import com.r400.ultra.free.rwallpapers.R;
 import com.r400.ultra.free.rwallpapers.Utilities.InternetConnection;
 import com.r400.ultra.free.rwallpapers.Utilities.TinyDB;
-import com.squareup.picasso.MemoryPolicy;
-import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -44,15 +41,12 @@ public class Launcher extends AppCompatActivity {
     private LoadAndSetPicAsyncTask loadAndSetPicAsyncTask;
     private int progressElastic;
 
-    String appKey = "72766faa040772c0f8516a57c6d71d532a4f03bf53d9a1cd";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         OptionView.noBackground = true;
-        Appodeal.disableLocationPermissionCheck();
         setContentView(R.layout.activity_launcher);
-        Appodeal.initialize(this, appKey, Appodeal.BANNER_BOTTOM);
         tinyDB = new TinyDB(Launcher.this);
         mElasticDownloadView = (ElasticDownloadView)findViewById(R.id.elastic_download_view);
 
@@ -71,13 +65,6 @@ public class Launcher extends AppCompatActivity {
         selectedGenresArray = new ArrayList<>();
         selectedGenresReady = new ArrayList<>();
         getSelectedGenres();
-    }
-
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-        Appodeal.show(Launcher.this, Appodeal.BANNER_BOTTOM);
-
     }
 
     public int randomTip(){
@@ -198,8 +185,6 @@ public class Launcher extends AppCompatActivity {
     private void loadBitmap() {
         Picasso.with(Launcher.this)
                 .load(randomizedString2K())
-//                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
-//                .networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_STORE)
                 .into(target);
     }
 

@@ -18,10 +18,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.appodeal.ads.Appodeal;
 import com.isseiaoki.simplecropview.CropImageView;
 import com.r400.ultra.free.rwallpapers.R;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -50,9 +51,7 @@ public class CustomCropActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Appodeal.disableLocationPermissionCheck();
         setContentView(R.layout.crop_image);
-        Appodeal.initialize(this, appKey, Appodeal.BANNER_BOTTOM);
 
 
         Display display = this.getWindowManager().getDefaultDisplay();
@@ -105,12 +104,6 @@ public class CustomCropActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-        Appodeal.show(CustomCropActivity.this, Appodeal.BANNER_BOTTOM);
-    }
-
     public void setBitmapWallpaper(Bitmap bitmapWallpaper) {
         if (bitmapWallpaper != null) {
             WallpaperManager wallpaperManager = WallpaperManager.getInstance(CustomCropActivity.this);
@@ -122,10 +115,11 @@ public class CustomCropActivity extends AppCompatActivity {
         }
     }
 
-
     private void initPicasso(){
             Picasso.with(this)
                     .load(intent.getStringExtra("DataURL"))
+                    .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+                    .networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_STORE)
                     .into(target);
     }
 
