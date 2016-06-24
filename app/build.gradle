@@ -8,10 +8,8 @@ android {
         applicationId "com.r400.ultra.free.rwallpapers"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 9
-        multiDexEnabled true
-        versionName "1.8"
-        generatedDensities = []
+        versionCode 10
+        versionName "2.0"
     }
 }
 repositories {
@@ -33,15 +31,19 @@ dependencies {
     compile('com.github.florent37:materialviewpager:1.1.3') {
         transitive = true
     }
-    compile project(':appodeal-1.14.12')
+    compile('com.yalantis:ucrop:2.0.0@aar') {
+        transitive = true
+    }
+    compile project(':appodeal-1.14.14')
+    compile project(':applovin-6.1.5')
     compile project(':flurry-analytics-6.2.0')
-    compile project(':inmobi-5.2.3')
+    compile project(':inmobi-5.3.0')
     compile project(':my-target-4.3.10')
-    compile project(':unity-ads-1.4.7')
-    compile project(':yandex-metrica-2.32')
-    compile 'com.github.hotchemi:android-rate:1.0.1'
+    compile project(':yandex-metrica-2.41')
     compile 'com.google.android.gms:play-services-ads:8.4.0'
-    compile 'it.michelelacorte.elasticprogressbar:library:1.0.5'
     compile 'com.google.code.gson:gson:2.4'
-    compile 'com.isseiaoki:simplecropview:1.1.0'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.volley:volley:1.0.0'
+    compile 'com.nvanbenschoten.motion:library:1.1.2'
+    compile 'com.github.hotchemi:android-rate:1.0.1'
 }

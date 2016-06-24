@@ -1,4 +1,4 @@
-package com.r400.ultra.free.rwallpapers.fragments;
+package com.r400.ultra.free.rwallpapers.fragments.transitions;
 
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -9,7 +9,7 @@ import android.view.View;
  */
 public class ZoomOutPageTransformer implements ViewPager.PageTransformer{
 
-    private static final float MIN_SCALE = 0.85f;
+    private static final float MIN_SCALE = 0.89f;
     private static final float MIN_ALPHA = 0.5f;
 
     @Override

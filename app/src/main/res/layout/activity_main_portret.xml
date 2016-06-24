@@ -2,16 +2,20 @@
 <android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:parallax="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/backgroundImg"
+    <com.nvanbenschoten.motion.ParallaxImageView
+        android:id="@+id/parallaxImgMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="-100dp"
-        android:layout_marginRight="-450dp"/>
+        android:layout_marginRight="-450dp"
+        parallax:motionTiltSensitivity="1.2"
+        />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -48,7 +52,7 @@
             android:id="@+id/includeFooter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            layout="@layout/footer"
+            layout="@layout/footer_btn"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentLeft="true" />

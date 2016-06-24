@@ -13,17 +13,18 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.github.florent37.materialviewpager.header.HeaderDesign;
+import com.nvanbenschoten.motion.ParallaxImageView;
 import com.r400.ultra.free.rwallpapers.R;
 import com.r400.ultra.free.rwallpapers.Utilities.InternetConnection;
 import com.r400.ultra.free.rwallpapers.Utilities.TinyDB;
@@ -32,19 +33,21 @@ import com.r400.ultra.free.rwallpapers.fragments.genres.RecyclerViewFragmentCG;
 import com.r400.ultra.free.rwallpapers.fragments.genres.RecyclerViewFragmentCrafts;
 import com.r400.ultra.free.rwallpapers.fragments.genres.RecyclerViewFragmentMovies;
 import com.r400.ultra.free.rwallpapers.fragments.genres.RecyclerViewFragmentWorld;
-import com.r400.ultra.free.rwallpapers.fragments.ZoomOutPageTransformer;
+import com.r400.ultra.free.rwallpapers.fragments.transitions.ZoomOutPageTransformer;
+import com.r400.ultra.free.rwallpapers.model.MyGenre;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import hotchemi.android.rate.AppRate;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, CGAdapter.AdapterCallback {
 
-    final String TAG = "mLOGs";
+
     private MaterialViewPager mViewPager;
-    private Toolbar toolbar;
-    private ImageView imageView;
+    ParallaxImageView parallaxImageView;
 
     private static final String VK_APP_PACKAGE_ID = "com.vkontakte.android";
     private static final String FACEBOOK_APP_PACKAGE_ID = "com.facebook.katana";
@@ -52,11 +55,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //https://github.com/kcochibili/TinyDB--Android-Shared-Preferences-Turbo
     private TinyDB tinyDB;
 
-    private ArrayList<Genres> cgGenresArrayList;
-    private ArrayList<Genres> moviesGenresArrayList;
-    private ArrayList<Genres> worldGenresArrayList;
-    private ArrayList<Genres> craftsGenresArrayList;
-    private ArrayList<Genres> fullGenresArrayList;
+    private ArrayList<MyGenre> cgMyGenreArrayList;
+    private ArrayList<MyGenre> moviesMyGenreArrayList;
+    private ArrayList<MyGenre> worldMyGenreArrayList;
+    private ArrayList<MyGenre> craftsMyGenreArrayList;
+    private ArrayList<MyGenre> fullMyGenreArrayList;
     private ArrayList<String> toDeployArrayList;
     public Button btnLicense;
     public Button btnVk;
@@ -67,21 +70,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_portret);
 
-
         mViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
-        toolbar = mViewPager.getToolbar();
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            ActionBar actionBar = getSupportActionBar();
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowHomeEnabled(true);
-            actionBar.setDisplayShowTitleEnabled(true);
-            actionBar.setDisplayUseLogoEnabled(false);
-            actionBar.setHomeButtonEnabled(true);
-        }
 
-        imageView = (ImageView) findViewById(R.id.backgroundImg);
-        imageView.setBackgroundResource(randomBackground());
+        parallaxImageView = (ParallaxImageView) findViewById(R.id.parallaxImgMain);
         btnFB = (Button) findViewById(R.id.btnFB);
         btnVk = (Button) findViewById(R.id.btnVk);
         btnLicense = (Button) findViewById(R.id.btnLicense);
@@ -152,7 +143,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 return "";
             }
+
+            @Override
+            public float getPageWidth(int position) {
+
+                return 1f;
+            }
         });
+
 
         //Движущийся бэкграунд
         mViewPager.getViewPager().addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -160,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 int totalPages = mViewPager.getViewPager().getAdapter().getCount();
                 float finalPercentage = ((position + positionOffset) * 700 / totalPages);
-                imageView.setTranslationX(-finalPercentage);
+                parallaxImageView.setTranslationX(-finalPercentage);
             }
 
             @Override
@@ -175,10 +173,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Анимация ViewPager'a
         mViewPager.getViewPager().setPageTransformer(true, new ZoomOutPageTransformer());
 
+//        mViewPager.getViewPager().setPageMargin(20);
+
         //Название разделов Selection Actualités Professionnel
         mViewPager.getViewPager().setOffscreenPageLimit(mViewPager.getViewPager().getAdapter().getCount());
         mViewPager.getPagerTitleStrip().setViewPager(mViewPager.getViewPager());
 
+        //Шрифт
         Typeface keys = Typeface.createFromAsset(getAssets(), getString(R.string.inside_font));
         ViewGroup keyboardArea = (ViewGroup)findViewById(R.id.drawer_layout);
         setFont(keyboardArea, keys);
@@ -202,26 +203,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        //RateApp
-//        AppRate.with(this)
-//                .setInstallDays(0) // default 10, 0 means install day.
-//                .setLaunchTimes(0)
-//                .setRemindInterval(2) // default 1
-//                .setShowLaterButton(true) // default true
-//                .setTitle(R.string.support_me)
-//                .setMessage(R.string.support_message)
-//                .setTextLater(R.string.support_later)
-//                .setTextNever(R.string.support_no)
-//                .setTextRateNow(R.string.support_now)
-//                .monitor();
+        AppRate.with(this)
+                .setInstallDays(3) // default 10, 0 means install day.
+                .setLaunchTimes(10) // default 10
+                .setRemindInterval(2) // default 1
+                .setShowLaterButton(true) // default true
+                .setDebug(false) // default false
+                .monitor();
     }
 
     public void initArrayLists(){
-        cgGenresArrayList = new ArrayList<>();
-        moviesGenresArrayList = new ArrayList<>();
-        worldGenresArrayList = new ArrayList<>();
-        craftsGenresArrayList = new ArrayList<>();
-        fullGenresArrayList = new ArrayList<>();
+        cgMyGenreArrayList = new ArrayList<>();
+        moviesMyGenreArrayList = new ArrayList<>();
+        worldMyGenreArrayList = new ArrayList<>();
+        craftsMyGenreArrayList = new ArrayList<>();
+        fullMyGenreArrayList = new ArrayList<>();
         toDeployArrayList = new ArrayList<>();
     }
 
@@ -253,25 +249,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Random Background
     public int randomBackground(){
         int random = 0;
-        int[] bcgroundArray = new int[17];
+        int[] bcgroundArray = new int[20];
         int max = bcgroundArray.length;
-        bcgroundArray[0] = R.drawable.background1;
-        bcgroundArray[1] = R.drawable.background2;
-        bcgroundArray[2] = R.drawable.background3;
-        bcgroundArray[3] = R.drawable.background4;
-        bcgroundArray[4] = R.drawable.background5;
-        bcgroundArray[5] = R.drawable.background6;
-        bcgroundArray[6] = R.drawable.background7;
-        bcgroundArray[7] = R.drawable.background8;
-        bcgroundArray[8] = R.drawable.background10;
-        bcgroundArray[9] = R.drawable.background12;
-        bcgroundArray[10] = R.drawable.background9;
-        bcgroundArray[11] = R.drawable.background14;
-        bcgroundArray[12] = R.drawable.background15;
-        bcgroundArray[13] = R.drawable.background16;
-        bcgroundArray[14] = R.drawable.background17;
-        bcgroundArray[15] = R.drawable.background18;
-        bcgroundArray[16] = R.drawable.background19;
+        bcgroundArray[0] = R.drawable.background2;
+        bcgroundArray[1] = R.drawable.background3;
+        bcgroundArray[2] = R.drawable.background5;
+        bcgroundArray[3] = R.drawable.background6;
+        bcgroundArray[4] = R.drawable.background7;
+        bcgroundArray[5] = R.drawable.background8;
+        bcgroundArray[6] = R.drawable.background10;
+        bcgroundArray[7] = R.drawable.background12;
+        bcgroundArray[8] = R.drawable.background9;
+        bcgroundArray[9] = R.drawable.background15;
+        bcgroundArray[10] = R.drawable.background16;
+        bcgroundArray[11] = R.drawable.background18;
+        bcgroundArray[12] = R.drawable.background19;
+        bcgroundArray[13] = R.drawable.background20;
+        bcgroundArray[14] = R.drawable.background21;
+        bcgroundArray[15] = R.drawable.background22;
+        bcgroundArray[16] = R.drawable.background23;
+        bcgroundArray[17] = R.drawable.background24;
+        bcgroundArray[18] = R.drawable.background25;
+        bcgroundArray[19] = R.drawable.background26;
         random = (int) Math.floor(Math.random()*max);
         return bcgroundArray[random];
     }
@@ -279,10 +278,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-//        AppRate.showRateDialogIfMeetsConditions(this);
         tinyDB = new TinyDB(this);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         boolean previouslyStarted = prefs.getBoolean(getString(R.string.pref_previously_started_main), false);
+        parallaxImageView.registerSensorManager();
+        parallaxImageView.setImageResource(randomBackground());
         if(!previouslyStarted) {
             SharedPreferences.Editor edit = prefs.edit();
             edit.putBoolean(getString(R.string.pref_previously_started_main), Boolean.TRUE);
@@ -293,41 +293,62 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .setPositiveButton(R.string.ok, null)
                     .show();
         }
+        AppRate.showRateDialogIfMeetsConditions(this);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        parallaxImageView.unregisterSensorManager();
+    }
 
     @Override
     public void updateChecked(CGAdapter cgAdapter) {
-        if (!fullGenresArrayList.isEmpty()) {
-            fullGenresArrayList.clear();
+        if (!fullMyGenreArrayList.isEmpty()) {
+            fullMyGenreArrayList.clear();
         }
-        cgGenresArrayList = tinyDB.getListObject("listFromCGAdapter", Genres.class);
-        moviesGenresArrayList = tinyDB.getListObject("listFromMoviesAdapter", Genres.class);
-        worldGenresArrayList = tinyDB.getListObject("listFromWorldAdapter", Genres.class);
-        craftsGenresArrayList = tinyDB.getListObject("listFromCraftsAdapter", Genres.class);
+        cgMyGenreArrayList = tinyDB.getListGenres("listFromCGAdapter", MyGenre.class);
+        moviesMyGenreArrayList = tinyDB.getListGenres("listFromMoviesAdapter", MyGenre.class);
+        worldMyGenreArrayList = tinyDB.getListGenres("listFromWorldAdapter", MyGenre.class);
+        craftsMyGenreArrayList = tinyDB.getListGenres("listFromCraftsAdapter", MyGenre.class);
 
-        fullGenresArrayList.addAll(cgGenresArrayList);
-        fullGenresArrayList.addAll(moviesGenresArrayList);
-        fullGenresArrayList.addAll(worldGenresArrayList);
-        fullGenresArrayList.addAll(craftsGenresArrayList);
+        fullMyGenreArrayList.addAll(cgMyGenreArrayList);
+        fullMyGenreArrayList.addAll(moviesMyGenreArrayList);
+        fullMyGenreArrayList.addAll(worldMyGenreArrayList);
+        fullMyGenreArrayList.addAll(craftsMyGenreArrayList);
 
-        tinyDB.putListGenres("fullGenresArrayList", fullGenresArrayList);
+        tinyDB.putListGenres("fullMyGenreArrayList", fullMyGenreArrayList);
     }
 
     public void onClick(View view) {
         Intent intent;
-        fullGenresArrayList = tinyDB.getListObject("fullGenresArrayList", Genres.class);
+        if (!toDeployArrayList.isEmpty() || !fullMyGenreArrayList.isEmpty()) {
+            toDeployArrayList.clear();
+            fullMyGenreArrayList.clear();
+        }
+        fullMyGenreArrayList = tinyDB.getListGenres("fullMyGenreArrayList", MyGenre.class);
+        for (int i = 0; i < fullMyGenreArrayList.size(); i++) {
+            MyGenre gr = fullMyGenreArrayList.get(i);
+            if (gr.isSelected()) {
+                toDeployArrayList.add(gr.getName());
+            }
+        }
+
         switch (view.getId()) {
             case R.id.btnLaunch:
-                for (int i = 0; i < fullGenresArrayList.size(); i++) {
-                    Genres gr = fullGenresArrayList.get(i);
-                    if (gr.isSelected()) {
-                        toDeployArrayList.add(gr.getName());
+                if(!toDeployArrayList.isEmpty()) {
+                    if (InternetConnection.internetConnectionAvailable(10000)) {
+                        tinyDB.putListString("toDeployArrayList", toDeployArrayList);
+                        intent = new Intent(MainActivity.this, ChoosenViewPager.class);
+                        Toast.makeText(this, "Deploy " + toDeployArrayList.size(), Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(this, "No Internet connection.", Toast.LENGTH_LONG).show();
                     }
                 }
-                tinyDB.putListString("toDeployArrayList", toDeployArrayList);
-                intent = new Intent(MainActivity.this, Launcher.class);
-                startActivity(intent);
+                else {
+                    Toast.makeText(this, "Your Favorite List is empty ", Toast.LENGTH_LONG).show();
+                }
                 break;
         }
     }

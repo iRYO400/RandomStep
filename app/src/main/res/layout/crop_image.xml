@@ -106,14 +106,29 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/crop_button"
-        android:layout_width="wrap_content"
-        android:padding="10dp"
-        android:background="@drawable/ripple_guillotine"
-        android:textColor="@color/text_hover"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/cropAndSet" />
+        android:orientation="horizontal"
+        android:gravity="center">
 
+        <Button
+            android:id="@+id/crop_button"
+            android:layout_width="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/ripple_guillotine"
+            android:textColor="@color/text_hover"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/cropAndSet" />
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/ripple_guillotine"
+            android:textColor="@color/text_hover"
+            android:layout_height="wrap_content"
+            android:text="@string/next" />
+    </LinearLayout>
 </LinearLayout>

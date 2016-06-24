@@ -1,2 +1,0 @@
-configurations.maybeCreate("default")
-artifacts.add("default", file('yandex-metrica-2.32.jar'))

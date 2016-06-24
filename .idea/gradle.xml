@@ -10,12 +10,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/applovin-6.1.5" />
-            <option value="$PROJECT_DIR$/appodeal-1.14.12" />
+            <option value="$PROJECT_DIR$/appodeal-1.14.14" />
             <option value="$PROJECT_DIR$/flurry-analytics-6.2.0" />
-            <option value="$PROJECT_DIR$/inmobi-5.2.3" />
+            <option value="$PROJECT_DIR$/inmobi-5.3.0" />
             <option value="$PROJECT_DIR$/my-target-4.3.10" />
-            <option value="$PROJECT_DIR$/unity-ads-1.4.7" />
-            <option value="$PROJECT_DIR$/yandex-metrica-2.32" />
+            <option value="$PROJECT_DIR$/yandex-metrica-2.41" />
           </set>
         </option>
         <option name="myModules">
@@ -23,12 +22,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/applovin-6.1.5" />
-            <option value="$PROJECT_DIR$/appodeal-1.14.12" />
+            <option value="$PROJECT_DIR$/appodeal-1.14.14" />
             <option value="$PROJECT_DIR$/flurry-analytics-6.2.0" />
-            <option value="$PROJECT_DIR$/inmobi-5.2.3" />
+            <option value="$PROJECT_DIR$/inmobi-5.3.0" />
             <option value="$PROJECT_DIR$/my-target-4.3.10" />
-            <option value="$PROJECT_DIR$/unity-ads-1.4.7" />
-            <option value="$PROJECT_DIR$/yandex-metrica-2.32" />
+            <option value="$PROJECT_DIR$/yandex-metrica-2.41" />
           </set>
         </option>
       </GradleProjectSettings>

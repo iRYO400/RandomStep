@@ -1,4 +1,17 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <color name="colorPrimary">#FF6E40</color>
+    <color name="colorPrimaryDark">#CC5833</color>
+    <color name="colorAccent">#FF6E40</color>
+
+
+    <color tools:override = "true" name="ucrop_color_toolbar_widget">@color/slide_1</color>
+
+    <color name="ucrop_color_widget_background" tools:ignore="PrivateResource">@color/blackFront</color>
+
+    <color name="ucrop_color_widget" tools:ignore="PrivateResource">@color/secondaryText</color>
+
+    <color name="ucrop_color_widget_text" tools:ignore="PrivateResource">@color/secondaryText</color>
 
     <color name="black_overlay">#66000000</color>
     <color name="primary_material_light">#d0d0d0</color>
@@ -39,15 +52,5 @@
     <color name="material_blue_grey_800">#37474F</color>
     <color name="material_teal_a400">#1DE9B6</color>
     <color name="material_red_400">#EF5350</color>
-
-    <color name="wguillotine_background">#607D8B</color>
-    <color name="wguillotine_background_dark">#37474F</color>
-    <color name="wselected_item_color">#EF5350</color>
-    <color name="wcolorAccent">#EF5350</color>
-
-    <color name="sguillotine_background">#444153</color>
-    <color name="sguillotine_background_dark">#383547</color>
-    <color name="sselected_item_color">#30d1d5</color>
-    <color name="scolorAccent">#a01100</color>
 
 </resources>

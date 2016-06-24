@@ -29,7 +29,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 import com.google.gson.Gson;
-import com.r400.ultra.free.rwallpapers.activity.Genres;
+import com.r400.ultra.free.rwallpapers.model.MyGenre;
+import com.r400.ultra.free.rwallpapers.model.MyImage;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -315,19 +316,31 @@ public class TinyDB {
     }
 
 
-    public ArrayList<Genres> getListObject(String key, Class<?> mClass){
+    public ArrayList<MyGenre> getListGenres(String key, Class<?> mClass){
     	Gson gson = new Gson();
 
     	ArrayList<String> objStrings = getListString(key);
-    	ArrayList<Genres> objects =  new ArrayList<Genres>();
+    	ArrayList<MyGenre> objects =  new ArrayList<MyGenre>();
 
     	for(String jObjString : objStrings){
-            Genres value  = (Genres) gson.fromJson(jObjString,  mClass);
+            MyGenre value  = (MyGenre) gson.fromJson(jObjString,  mClass);
     		objects.add(value);
     	}
     	return objects;
     }
-    
+
+    public ArrayList<MyImage> getListImages(String key, Class<?> mClass){
+        Gson gson = new Gson();
+
+        ArrayList<String> objStrings = getListString(key);
+        ArrayList<MyImage> objects =  new ArrayList<MyImage>();
+
+        for(String jObjString : objStrings){
+            MyImage value  = (MyImage) gson.fromJson(jObjString,  mClass);
+            objects.add(value);
+        }
+        return objects;
+    }
 
     
     public  Object getObject(String key, Class<?> classOfT){
@@ -473,13 +486,29 @@ public class TinyDB {
      * @param key SharedPreferences key
      * @param objArray is the Object you want to put
      */
-    public void putListGenres(String key, ArrayList<Genres> objArray){
+    public void putListGenres(String key, ArrayList<MyGenre> objArray){
     	checkForNullKey(key);
     	Gson gson = new Gson();
     	ArrayList<String> objStrings = new ArrayList<String>();
     	for(Object obj : objArray){
     		objStrings.add(gson.toJson(obj));
     	}
+        putListString(key, objStrings);
+    }
+
+    /**
+     * Здесь был ObjectArray
+     * Put ObJect any type into SharedPrefrences with 'key' and save
+     * @param key SharedPreferences key
+     * @param objArray is the Object you want to put
+     */
+    public void putListImages(String key, ArrayList<MyImage> objArray){
+        checkForNullKey(key);
+        Gson gson = new Gson();
+        ArrayList<String> objStrings = new ArrayList<String>();
+        for(Object obj : objArray){
+            objStrings.add(gson.toJson(obj));
+        }
         putListString(key, objStrings);
     }
     
