@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/relativeLayout"
+            android:layout_above="@+id/includeFooter"
+            android:layout_marginBottom="-19dp">
+            <com.r400.ultra.free.rwallpapers.Utilities.NonSwipeableViewPager
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </com.r400.ultra.free.rwallpapers.Utilities.NonSwipeableViewPager>
+        </RelativeLayout>
+
+
+        <include
+            android:id="@+id/includeFooter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/next_btn"
+            android:layout_marginBottom="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true" />
+    </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>

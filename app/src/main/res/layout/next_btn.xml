@@ -1,0 +1,21 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/next_layout"
+    android:layout_marginBottom="2dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/btnNEXT"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/ripple_guillotine"
+        android:text="NEXT"
+        android:textColor="@color/text_hover"
+        android:textSize="26sp"
+        android:layout_gravity="center_vertical" />
+
+</LinearLayout>

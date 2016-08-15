@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:parallax="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#212121">
+
+    <com.nvanbenschoten.motion.ParallaxImageView
+        android:id="@+id/parallaxImg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        parallax:motionTiltSensitivity="1.8"
+        />
+    <RelativeLayout
+        android:gravity="center_horizontal"
+        android:background="@drawable/bitch"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/helpText"
+            android:textColor="#fcfcfc" />
+    </RelativeLayout>
+</RelativeLayout>

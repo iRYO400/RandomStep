@@ -1,1 +1,1 @@
-include ':app', ':appodeal-1.14.14', ':applovin-6.1.5', ':flurry-analytics-6.2.0', ':inmobi-5.3.0', ':my-target-4.3.10', ':yandex-metrica-2.41'
+include ':app', ':flurry-analytics-6.2.0', ':yandex-metrica-2.41', ':applovin-6.2.2', ':appodeal-1.14.15', ':inmobi-5.3.1', ':my-target-4.5.1'

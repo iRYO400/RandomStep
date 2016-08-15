@@ -72,4 +72,29 @@
     <string name="licence3" translatable="false">You can modify, copy and distribute the photos.</string>
     <string name="readyPool">Д</string>
 
+    <string-array name="headerDesignCG" translatable="false>" >
+        <item>https://api.backendless.com/AB502B65-B14E-D0F9-FF02-A83FC055C200/v1/files/CATEGORIES/abs-min.jpg</item>
+        <item>https://api.backendless.com/AB502B65-B14E-D0F9-FF02-A83FC055C200/v1/files/CATEGORIES/fantasy-min.jpg</item>
+        <item>https://api.backendless.com/AB502B65-B14E-D0F9-FF02-A83FC055C200/v1/files/CATEGORIES/gaming-min.jpg</item>
+        <item>https://api.backendless.com/AB502B65-B14E-D0F9-FF02-A83FC055C200/v1/files/CATEGORIES/vec-min.jpg</item>
+    </string-array>
+    <string-array name="headerDesignMovies" translatable="false>">
+        <item>https://api.backendless.com/AB502B65-B14E-D0F9-FF02-A83FC055C200/v1/files/CATEGORIES/movies-min.jpg</item>
+        <item>https://api.backendless.com/AB502B65-B14E-D0F9-FF02-A83FC055C200/v1/files/CATEGORIES/movies2-min.jpg</item>
+        <item>https://api.backendless.com/AB502B65-B14E-D0F9-FF02-A83FC055C200/v1/files/CATEGORIES/cartoons-min.jpg</item>
+
+
+    </string-array>
+    <string-array name="headerDesignCrafts" translatable="false>">
+        <item>https://api.backendless.com/AB502B65-B14E-D0F9-FF02-A83FC055C200/v1/files/CATEGORIES/bikes-min.jpg</item>
+        <item>https://api.backendless.com/AB502B65-B14E-D0F9-FF02-A83FC055C200/v1/files/CATEGORIES/cars-min.jpg</item>
+        <item>https://api.backendless.com/AB502B65-B14E-D0F9-FF02-A83FC055C200/v1/files/CATEGORIES/air-min.jpg</item>
+    </string-array>
+    <string-array name="headerDesignWorld" translatable="false>">
+        <item>https://api.backendless.com/AB502B65-B14E-D0F9-FF02-A83FC055C200/v1/files/CATEGORIES/city-min.jpg</item>
+        <item>https://api.backendless.com/AB502B65-B14E-D0F9-FF02-A83FC055C200/v1/files/CATEGORIES/nature-min.jpg</item>
+        <item>https://api.backendless.com/AB502B65-B14E-D0F9-FF02-A83FC055C200/v1/files/CATEGORIES/seasons-min.jpg</item>
+        <item>https://api.backendless.com/AB502B65-B14E-D0F9-FF02-A83FC055C200/v1/files/CATEGORIES/space-min.jpg</item>
+    </string-array>
+
 </resources>

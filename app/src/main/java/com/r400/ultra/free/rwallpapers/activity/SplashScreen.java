@@ -172,7 +172,7 @@ public class SplashScreen extends Activity {
                 }
             });
             AppController.getInstance().addToRequestQueue(req4);
-            for(int i = 0; i < 100; i++){
+            for(int i = 0; i < 5; i++){
                 SystemClock.sleep(15);
             }
             return null;

@@ -9,11 +9,11 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/applovin-6.1.5" />
-            <option value="$PROJECT_DIR$/appodeal-1.14.14" />
+            <option value="$PROJECT_DIR$/applovin-6.2.2" />
+            <option value="$PROJECT_DIR$/appodeal-1.14.15" />
             <option value="$PROJECT_DIR$/flurry-analytics-6.2.0" />
-            <option value="$PROJECT_DIR$/inmobi-5.3.0" />
-            <option value="$PROJECT_DIR$/my-target-4.3.10" />
+            <option value="$PROJECT_DIR$/inmobi-5.3.1" />
+            <option value="$PROJECT_DIR$/my-target-4.5.1" />
             <option value="$PROJECT_DIR$/yandex-metrica-2.41" />
           </set>
         </option>
@@ -21,11 +21,11 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/applovin-6.1.5" />
-            <option value="$PROJECT_DIR$/appodeal-1.14.14" />
+            <option value="$PROJECT_DIR$/applovin-6.2.2" />
+            <option value="$PROJECT_DIR$/appodeal-1.14.15" />
             <option value="$PROJECT_DIR$/flurry-analytics-6.2.0" />
-            <option value="$PROJECT_DIR$/inmobi-5.3.0" />
-            <option value="$PROJECT_DIR$/my-target-4.3.10" />
+            <option value="$PROJECT_DIR$/inmobi-5.3.1" />
+            <option value="$PROJECT_DIR$/my-target-4.5.1" />
             <option value="$PROJECT_DIR$/yandex-metrica-2.41" />
           </set>
         </option>
